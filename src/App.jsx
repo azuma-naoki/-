@@ -5,7 +5,7 @@ function Header() {
     <header className="hero is-dark is-bold">
       <div className="hero-body">
         <div className="container">
-          <h1 className="title">Cute Dog Images</h1>
+          <h1 className="title">PriGraph</h1>
         </div>
       </div>
     </header>
@@ -58,8 +58,11 @@ function Form(props) {
           <div className="control is-expanded">
             <div className="select is-fullwidth">
               <select name="breed" defaultValue="shiba">
-                <option value="shiba">Shiba</option>
-                <option value="akita">Akita</option>
+                <option value="shiba">棒グラフ</option>
+                <option value="akita">円グラフ</option>
+                <option value="akita">ヒストグラム</option>
+                <option value="akita">折れ線グラフ</option>
+                <option value="akita">散布図</option>
               </select>
             </div>
           </div>
@@ -95,7 +98,7 @@ function Main() {
       </section>
       <section className="section">
         <div className="container">
-          <Gallery urls={urls} />
+          {/* <Gallery urls={urls} /> */}
         </div>
       </section>
     </main>
@@ -106,10 +109,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="content has-text-centered">
-        <p>Dog images are retrieved from Dog API</p>
-        <p>
-          <a href="https://dog.ceo/dog-api/about">Donate to Dog API</a>
-        </p>
+        <p>&copy; PriGraph</p>
       </div>
     </footer>
   );
