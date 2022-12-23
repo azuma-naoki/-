@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchImages } from "./api";
 function Header() {
   return (
-    <header className="hero is-dark is-bold">
+    <header className="hero is-primary is-bold">
       <div className="hero-body">
         <div className="container">
           <h1 className="title">PriGraph</h1>
