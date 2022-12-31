@@ -1,16 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchImages } from "./api";
-function Header() {
-  return (
-    <header className="hero is-primary is-bold">
-      <div className="hero-body">
-        <div className="container">
-          <h1 className="title">PriGraph</h1>
-        </div>
-      </div>
-    </header>
-  );
-}
+import Header from "./Components/Header";
+import Body from "./Components/Body";
 
 function Image(props) {
   return (
@@ -97,9 +88,7 @@ function Main() {
         </div>
       </section>
       <section className="section">
-        <div className="container">
-          {/* <Gallery urls={urls} /> */}
-        </div>
+        <div className="container">{/* <Gallery urls={urls} /> */}</div>
       </section>
     </main>
   );
@@ -119,6 +108,7 @@ function App() {
   return (
     <div>
       <Header />
+      <Body />
       <Main />
       <Footer />
     </div>
