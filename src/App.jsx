@@ -109,7 +109,7 @@ function App() {
     <div>
       <Header />
       <Body />
-      <Main />
+      {/*<Main />*/}
       <Footer />
     </div>
   );
