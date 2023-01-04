@@ -6,11 +6,11 @@ import {Container,Box,Grid} from "@mui/material";
 const CreatePage = () => {
     return (
         <Provider store ={store} >
-            <Grid container style={{height:1000, margin:50}}>
-                <Grid container item xs={8}>
+            <Grid container spacing={2}>
+                <Grid item xs={8}>
                     <Preview/>
                 </Grid>
-                <Grid container item xs={4} style={{height:1000}}>
+                <Grid item xs={4}>
                     <GraphForm/>
                 </Grid>
             </Grid>
