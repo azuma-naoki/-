@@ -1,6 +1,7 @@
 import { Chart as Chartjs, registerables } from "chart.js";
 import { useSelector } from "react-redux";
 import { Chart,Line } from "react-chartjs-2";
+import {Typography,Box} from "@mui/material";
 
 Chartjs.register(...registerables);
 
@@ -21,22 +22,21 @@ const Preview = () => {
 
     const options = {
         maintainAspectRatio:false,
+        responsive:false,
     };
 
     return (
-        <div>
-            <h1>Preview</h1>
-            <div style = {{width:"50%",height:"50%"}}>
-                <Chart
-                    height={300}
-                    width={300}
-                    data={graph}
-                    options={options}
-                    id="chart-key"
-                /> 
-            </div>
+        <Box style={{maxWidth:"100%"}}>
+            <Typography variant="p">preview</Typography>
+            <Chart
+                width={800}
+                height={400}
+                data={graph}
+                options={options}
+                id="chart-key"                
+            /> 
             <p>{JSON.stringify(graphData)}</p>
-        </div>
+        </Box>
     );
 }
 
