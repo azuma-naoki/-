@@ -4,6 +4,12 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import BasicCard from "./BasicCard";
+import histgram from "../images/histgram.png";
+import pie from "../images/pie.png";
+import line from "../images/line.png";
+import bar from "../images/bar.png";
+import band from "../images/band.png";
+import boxplot from "../images/boxplot.png";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -18,19 +24,22 @@ export default function BasicGrid() {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item xs={4}>
-          <BasicCard />
+          <BasicCard name="棒グラフ" photo={bar} />
         </Grid>
         <Grid item xs={4}>
-          <BasicCard />
+          <BasicCard name="折れ線グラフ" photo={line} />
         </Grid>
         <Grid item xs={4}>
-          <BasicCard />
+          <BasicCard name="円グラフ" photo={pie} />
         </Grid>
         <Grid item xs={4}>
-          <Item>xs=4</Item>
+          <BasicCard name="ヒストグラム" photo={histgram} />
         </Grid>
-        <Grid item xs={8}>
-          <Item>xs=8</Item>
+        <Grid item xs={4}>
+          <BasicCard name="帯グラフ" photo={band} />
+        </Grid>
+        <Grid item xs={4}>
+          <BasicCard name="箱ひげ図" photo={boxplot} />
         </Grid>
       </Grid>
     </Box>
