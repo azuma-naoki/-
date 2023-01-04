@@ -5,7 +5,7 @@ import {Typography,Box} from "@mui/material";
 
 Chartjs.register(...registerables);
 
-const Preview = () => {
+const Preview = (props) => {
     const state = useSelector(state => state);
     const graphData = state.graphData
     const graph = {
@@ -22,21 +22,23 @@ const Preview = () => {
 
     const options = {
         maintainAspectRatio:false,
-        responsive:false,
+        responsive:true,
     };
 
     return (
-        <Box style={{maxWidth:"100%"}}>
-            <Typography variant="p">preview</Typography>
-            <Chart
-                width={800}
-                height={400}
-                data={graph}
-                options={options}
-                id="chart-key"                
-            /> 
+        <>
+            <Typography variant="p">preview</Typography> 
+            <div>
+                <Chart
+                    width={props.width}
+                    height={props.height}
+                    data={graph}
+                    options={options}
+                    id="chart-key"                
+                /> 
+            </div>
             <p>{JSON.stringify(graphData)}</p>
-        </Box>
+        </>
     );
 }
 

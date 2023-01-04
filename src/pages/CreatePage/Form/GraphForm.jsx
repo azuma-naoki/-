@@ -10,7 +10,7 @@ const GraphForm = () => {
     return (        
         <>
             <form onSubmit={pushSubmitButton}>
-                <Grid container spacing={3} style={{marginTop:10}}>
+                <Grid container spacing={3}>
                     <Grid item xs={12}>                        
                         <FileInput label="x軸:" val={"xs"}/><p></p>
                     </Grid>
