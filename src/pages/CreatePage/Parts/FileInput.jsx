@@ -1,6 +1,6 @@
 import {Button, Typography} from "@mui/material";
 import {useDispatch} from "react-redux";
-import {write} from "./store/modules/graphData";
+import {write} from "../store/modules/graphData";
 const FileInput = (props) => {
     const dispatch = useDispatch();
     const onChange = (event) => {

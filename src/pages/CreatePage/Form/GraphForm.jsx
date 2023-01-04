@@ -1,7 +1,7 @@
-import FileInput from "./FileInput";
-import ColorPicker from "./ColorPicker";
-import TextBox from "./TextBox";
-import SubmitButton from "./SubmitButton";
+import FileInput from "../Parts/FileInput";
+import ColorPicker from "../Parts/ColorPicker";
+import TextBox from "../Parts/TextBox";
+import SubmitButton from "../Parts/SubmitButton";
 const GraphForm = () => {
     const pushSubmitButton = (event) => {
         event.preventDefault();

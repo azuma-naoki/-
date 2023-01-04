@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux"
-import {write} from "./store/modules/graphData";
+import {write} from "../store/modules/graphData";
 const ColorPicker = (props) => {
     const dispatch = useDispatch();
     const onChange = (event) => {        

@@ -1,4 +1,4 @@
-import GraphForm from "./GraphForm";
+import GraphForm from "./Form/GraphForm";
 import Preview from "./Preview";
 import { Provider } from "react-redux";
 import store from "./store";
