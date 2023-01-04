@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "./Components/Header";
 import MainContents from "./pages/MainContents";
 import RenderGraph from "./pages/RenderGraph";
-
+import CreatePage from "./pages/CreatePage/CreatePage";
 
 function Main() {
   return (
@@ -27,8 +27,10 @@ function App() {
   return (
     <div>
       <Header />
-      <Main />
+      {/* <Main /> */}
+      <CreatePage/>
       <Footer />
+
     </div>
   );
 }
