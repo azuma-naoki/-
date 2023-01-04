@@ -17,7 +17,7 @@ const GraphForm = () => {
                     <Grid item xs={12}>
                         <FileInput label="y軸:" val={"ys"}/><p></p>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} >
                         <TextBox label="凡例:" val={"legend"}/>
                     </Grid>
                     <Grid item xs={12}>
