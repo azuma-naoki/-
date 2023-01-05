@@ -21,7 +21,7 @@ const GraphForm = () => {
             <Modal modalState={[isOpenModal,setIsOpenModal]}/>
             <form onSubmit={pushSubmitButton}>
                 <LineGraphForm/>              
-                <SubmitButton label="グラフを作成"/>      
+                <SubmitButton label="グラフを作成" sx={{padding:"90px"}}/>      
             </form>
         </>
     )

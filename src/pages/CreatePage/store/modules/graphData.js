@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const graphData = createSlice({
     name: "graphData",
-    initialState: {},
+    initialState: {grid:false},
     reducers: {
         write(state,{type,payload}) {
             const newObj = {...state};
