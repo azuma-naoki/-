@@ -18,10 +18,7 @@ const LineGraphForm = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <ColorPicker label="色を選択 " val={"color"}/>
-                </Grid>
-                <Grid item xs={12}>
-                    <SubmitButton label="グラフを作成"/>
-                </Grid>
+                </Grid>                
             </Grid>    
         </>
     )

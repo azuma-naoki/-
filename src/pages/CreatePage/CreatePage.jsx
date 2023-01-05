@@ -3,8 +3,9 @@ import Preview from "./Preview";
 import { Provider } from "react-redux";
 import store from "./store";
 import {Container,Box,Grid,Typography} from "@mui/material";
+import SubmitButton from "./Parts/SubmitButton";
+import Modal from "./Modal";
 const CreatePage = () => {
-    
     return (
         <Provider store = {store}>
             <Grid container spacing={0} sx={{backgroundColor:"#FFFFFF",border:"5px ridge #BBBBBB",width:"85%",margin:"30px auto 60px auto",borderRadius:20,boxShadow: "5px 8px 0px 5px rgba(0,0,0,0.6)"}}>
