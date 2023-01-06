@@ -1,13 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit"
-
+import {produce} from "immer";
 const graphData = createSlice({
     name: "graphData",
-    initialState: {grid:false},
+    initialState: {
+        grid:false,
+        datasets:[
+            {},{},{},{},{}
+        ]
+    },
     reducers: {
-        write(state,{type,payload}) {
-            const newObj = {...state};
-            newObj[payload.propertyName] = payload.newValue;
-            return newObj;
+        write(state,{payload}) {
+            const newState = produce(state, draft => {
+                if(payload.index === -1) {
+                    draft[payload.propertyName] = payload.newValue;
+                } else {
+                    draft.datasets[payload.index][payload.propertyName] = payload.newValue;
+                }
+            });
+            return newState;
+        },
+        addData(state,{type,payload}) {
+            
         }
     }
 })

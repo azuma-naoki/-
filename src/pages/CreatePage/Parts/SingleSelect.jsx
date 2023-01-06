@@ -12,8 +12,9 @@ const SingleSelect = (props) => {
   const dispatch = useDispatch();
   const onChange = (event) => {
     setAge(event.target.value);
-    const action = write({
+    const action = write({        
         propertyName:props.val, 
+        index:props.index,
         newValue: event.target.value,
     });
     dispatch(action);

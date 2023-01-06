@@ -11,23 +11,26 @@ const LineGraphForm = () => {
         <>
             <Grid container spacing={2}>
                 <Grid item xs={12}>                        
-                    <FileInput label="x軸:" val={"xs"}/><p></p>
+                    <FileInput label="xdata:" val={"xdata"} index={-1}/><p></p>
                 </Grid>
                 <Grid item xs={12}>
-                    <FileInput label="y軸:" val={"ys"}/><p></p>
+                    <FileInput label="ydata:" val={"ydata"} index={0}/><p></p>
                 </Grid>
                 <Grid item xs={12} >
-                    <TextBox label="凡例:" val={"legend"}/>
+                    <TextBox label="凡例:" val={"legend"} index={0}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <ColorPicker label="色を選択 " val={"color"}/>
+                    <ColorPicker label="色を選択 " val={"color"} index={0}/>
                 </Grid>   
                 <Grid item xs={12}>
-                    <SingleCheckbox label="Gridを表示" val={"grid"}/>
-                </Grid>         
-                <Grid item xs={12}>
-                    <SingleSelect label="linestyle" val={"linestyle"} options={{values:["solid","dashed","dotted"],displays:["solid","dashed","dotted"]}}/>
+                    <SingleSelect label="linestyle" val={"linestyle"} index={0} options={{values:["solid","dashed","dotted"],displays:["solid","dashed","dotted"]}}/>
                 </Grid>     
+                <Grid item xs={12} >
+                    <TextBox label="タイトル:" val={"title"} index={-1}/>
+                </Grid>
+                <Grid item xs={12}>
+                    <SingleCheckbox label="Gridを表示" val={"grid"} index={-1}/>
+                </Grid>         
                 <Grid item xs={12}/>       
             </Grid>    
         </>

@@ -6,6 +6,7 @@ const SingleSwitch = (props) => {
     const dispatch = useDispatch();
     const onChange = (event) => {
         const action = write({
+            index: props.index,
             propertyName:props.val, 
             newValue: event.target.checked,
         });

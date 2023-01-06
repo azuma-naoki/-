@@ -5,12 +5,6 @@ import {Typography,Box,Zoom,Slide} from "@mui/material";
 
 Chartjs.register(...registerables);
 
-// const lineStyle = {
-//     solid:[1,0],
-//     dash:[8,2],
-//     dotted:[1,1],
-// }
-
 const lineStyle = (graphData) => {
     switch(graphData.linestyle) {
         case "solid":
@@ -28,33 +22,42 @@ const Preview = (props) => {
     const state = useSelector(state => state);
     const graphData = state.graphData
     const graph = {
-        labels:graphData.xs,
+        labels:graphData.xdata, //xdata
         datasets: [
             {
-                type:"line",
-                label:graphData.legend,
-                data:graphData.ys,
-                borderColor:graphData.color,
-                borderDash:lineStyle(graphData),
-            }
+                type:"line",  // グラフのタイプ
+                data:graphData.ydata, // ydata
+                label:graphData.legend ? graphData.legend : "", //凡例
+                borderColor:graphData.color, //線の色
+                borderDash:lineStyle(graphData), //線の種類
+            },
         ]
     };
 
     const options = {
         maintainAspectRatio:false,
         responsive:true,
-        scales:{
-            x:{
+        plugins: { 
+            title: {
+                display: true,
+                text: graphData.title,
+                font: {
+                    size: 15
+                }
+            },
+        }, 
+        scales: {
+            x: {
                 grid:{
                     display:graphData.grid
                 }
             },
-            y:{
+            y: {
                 grid:{
                     display:graphData.grid
                 }
-            }
-        }
+            },
+        },
     };
 
     return (

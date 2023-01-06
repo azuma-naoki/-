@@ -11,6 +11,7 @@ const FileInput = (props) => {
             let result = fileReader.result.split(/\r\n|\n/);
             result = result.filter(item => item !== "");
             const action = write({
+                index: props.index,
                 propertyName:props.val, 
                 newValue: result
             });
