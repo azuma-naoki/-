@@ -18,14 +18,12 @@ const lineStyle = (linestyle) => {
     }
 }
 
+// charts.js形式に変換
 const convert = (dataset) => {
-    // if(!dataset.ydata) {
-    //     return null;
-    // }
     const result = {
         type:"line",
         data:dataset.ydata && dataset.ydata,
-        label:dataset.legend && dataset.legend,
+        label:dataset.legend ? dataset.legend : "",
         borderColor:dataset.color && dataset.color,
         borderDash:dataset.linestyle && lineStyle(dataset.linestyle)
     };
@@ -38,7 +36,7 @@ const Preview = (props) => {
 
     const graph = {
         labels:graphData.xdata, //xdata
-        datasets: [            
+        datasets: [
             convert(graphData.datasets[0]),
             convert(graphData.datasets[1]),
             convert(graphData.datasets[2]),

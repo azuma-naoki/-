@@ -7,9 +7,11 @@ import SingleSelect from "../Parts/SingleSelect";
 import {Grid} from "@mui/material";
 import {useState} from "react";
 import GraphSwitch from "../Parts/GraphSwitch";
+import {useSelector} from "react-redux";
 
 const LineGraphForm = () => {
     const [index, setIndex] = useState(0);
+    const graphData = useSelector(state => state.graphData);
     return (        
         <>            
             <Grid container spacing={2}>
@@ -28,7 +30,7 @@ const LineGraphForm = () => {
                     <TextBox label="凡例:" val={"legend"} index={index}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <ColorPicker label="色を選択 " val={"color"} index={index}/>
+                    <ColorPicker label="色を選択 " val={"color"} value={graphData.datasets[index].color} index={index}/>
                 </Grid>   
                 <Grid item xs={12}>
                     <SingleSelect label="線のスタイル" val={"linestyle"} index={index} options={{values:["solid","dashed","dotted"],displays:["solid","dashed","dotted"]}}/>

@@ -5,11 +5,11 @@ const graphData = createSlice({
     initialState: {
         grid:false,
         datasets:[
-            {linestyle:"solid"},
-            {linestyle:"solid"},
-            {linestyle:"solid"},
-            {linestyle:"solid"},
-            {linestyle:"solid"},
+            {linestyle:"solid", color:"#0084ff"},
+            {linestyle:"solid", color:"#0084ff"},
+            {linestyle:"solid", color:"#0084ff"},
+            {linestyle:"solid", color:"#0084ff"},
+            {linestyle:"solid", color:"#0084ff"},
         ]
     },
     reducers: {

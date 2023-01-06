@@ -1,5 +1,6 @@
 import {useDispatch} from "react-redux"
 import {write} from "../store/modules/graphData";
+// import 
 const ColorPicker = (props) => {
     const dispatch = useDispatch();
     const onChange = (event) => {        
@@ -14,7 +15,7 @@ const ColorPicker = (props) => {
         <>
             <label>
                 {props.label}
-                <input type="color" onChange={onChange}/>
+                <input type="color" value={props.value} onChange={onChange}/>
             </label>
         </>
     )
