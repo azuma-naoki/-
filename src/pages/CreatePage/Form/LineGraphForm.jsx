@@ -5,26 +5,33 @@ import SingleCheckbox from "../Parts/SingleCheckbox";
 import SingleSwitch from "../Parts/SingleSwitch";
 import SingleSelect from "../Parts/SingleSelect";
 import {Grid} from "@mui/material";
+import {useState} from "react";
+import GraphSwitch from "../Parts/GraphSwitch";
 
 const LineGraphForm = () => {
+    const [index, setIndex] = useState(0);
     return (        
-        <>
+        <>            
             <Grid container spacing={2}>
                 <h1>グラフ１</h1>
+                <Grid item xs={12}>
+                    <GraphSwitch states={[index,setIndex]} label="グラフ" options={{values:[0,1,2],displays:[0,1,2]}}/>
+                </Grid>     
+
                 <Grid item xs={12}>                        
                     <FileInput label="xdata:" val={"xdata"} index={-1}/><p></p>
                 </Grid>
                 <Grid item xs={12}>
-                    <FileInput label="ydata:" val={"ydata"} index={0}/><p></p>
+                    <FileInput label="ydata:" val={"ydata"} index={index}/><p></p>
                 </Grid>
                 <Grid item xs={12} >
-                    <TextBox label="凡例:" val={"legend"} index={0}/>
+                    <TextBox label="凡例:" val={"legend"} index={index}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <ColorPicker label="色を選択 " val={"color"} index={0}/>
+                    <ColorPicker label="色を選択 " val={"color"} index={index}/>
                 </Grid>   
                 <Grid item xs={12}>
-                    <SingleSelect label="linestyle" val={"linestyle"} index={0} options={{values:["solid","dashed","dotted"],displays:["solid","dashed","dotted"]}}/>
+                    <SingleSelect label="線のスタイル" val={"linestyle"} index={index} options={{values:["solid","dashed","dotted"],displays:["solid","dashed","dotted"]}}/>
                 </Grid>     
                 <Grid item xs={12} >
                     <TextBox label="タイトル:" val={"title"} index={-1}/>

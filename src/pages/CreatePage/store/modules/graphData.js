@@ -5,7 +5,11 @@ const graphData = createSlice({
     initialState: {
         grid:false,
         datasets:[
-            {},{},{},{},{}
+            {linestyle:"solid"},
+            {linestyle:"solid"},
+            {linestyle:"solid"},
+            {linestyle:"solid"},
+            {linestyle:"solid"},
         ]
     },
     reducers: {

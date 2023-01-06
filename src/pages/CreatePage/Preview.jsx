@@ -19,12 +19,15 @@ const lineStyle = (linestyle) => {
 }
 
 const convert = (dataset) => {
+    // if(!dataset.ydata) {
+    //     return null;
+    // }
     const result = {
         type:"line",
-        data:dataset.ydata,
-        label:dataset.legend,
-        borderColor:dataset.color,
-        borderDash:lineStyle(dataset.linestyle)
+        data:dataset.ydata && dataset.ydata,
+        label:dataset.legend && dataset.legend,
+        borderColor:dataset.color && dataset.color,
+        borderDash:dataset.linestyle && lineStyle(dataset.linestyle)
     };
     return result;
 }
@@ -32,14 +35,13 @@ const convert = (dataset) => {
 const Preview = (props) => {
     const state = useSelector(state => state);
     const graphData = state.graphData
-    console.log(graphData.datasets);
-
 
     const graph = {
         labels:graphData.xdata, //xdata
-        // datasets: graphData.datasets,
-        datasets: [
-            convert(graphData.datasets[0])
+        datasets: [            
+            convert(graphData.datasets[0]),
+            convert(graphData.datasets[1]),
+            convert(graphData.datasets[2]),
         ]
     };
 

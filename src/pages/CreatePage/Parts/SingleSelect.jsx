@@ -8,7 +8,7 @@ import {useDispatch} from "react-redux";
 import {write} from "../store/modules/graphData";
 
 const SingleSelect = (props) => {
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(props.options.values[0]);
   const dispatch = useDispatch();
   const onChange = (event) => {
     setAge(event.target.value);
