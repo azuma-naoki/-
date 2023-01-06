@@ -5,8 +5,8 @@ import {Typography,Box,Zoom,Slide} from "@mui/material";
 
 Chartjs.register(...registerables);
 
-const lineStyle = (graphData) => {
-    switch(graphData.linestyle) {
+const lineStyle = (linestyle) => {
+    switch(linestyle) {
         case "solid":
             return [1,0];
         case "dashed":
@@ -18,19 +18,28 @@ const lineStyle = (graphData) => {
     }
 }
 
+const convert = (dataset) => {
+    const result = {
+        type:"line",
+        data:dataset.ydata,
+        label:dataset.legend,
+        borderColor:dataset.color,
+        borderDash:lineStyle(dataset.linestyle)
+    };
+    return result;
+}
+
 const Preview = (props) => {
     const state = useSelector(state => state);
     const graphData = state.graphData
+    console.log(graphData.datasets);
+
+
     const graph = {
         labels:graphData.xdata, //xdata
+        // datasets: graphData.datasets,
         datasets: [
-            {
-                type:"line",  // グラフのタイプ
-                data:graphData.ydata, // ydata
-                label:graphData.legend ? graphData.legend : "", //凡例
-                borderColor:graphData.color, //線の色
-                borderDash:lineStyle(graphData), //線の種類
-            },
+            convert(graphData.datasets[0])
         ]
     };
 

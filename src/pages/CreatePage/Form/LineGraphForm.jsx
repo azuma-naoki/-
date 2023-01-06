@@ -10,6 +10,7 @@ const LineGraphForm = () => {
     return (        
         <>
             <Grid container spacing={2}>
+                <h1>グラフ１</h1>
                 <Grid item xs={12}>                        
                     <FileInput label="xdata:" val={"xdata"} index={-1}/><p></p>
                 </Grid>
