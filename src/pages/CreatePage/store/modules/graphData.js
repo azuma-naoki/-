@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import {produce} from "immer";
+import {maxIndex} from "../../const";
 
 const initialStates = {
     line: {
@@ -36,11 +37,11 @@ const graphData = createSlice({
             return newState;
         },
         addDataset(state, {payload}) {
-            if(state.datasets.length >= 5) {
+            if(state.datasets.length >= maxIndex) {
                 return;
             }
             const newState = produce(state, draft => {                             
-                draft.datasets.push(initialStates.line);
+                draft.datasets.push(initialStates.line);                
             });
             return newState;
         }

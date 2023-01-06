@@ -6,6 +6,9 @@ import {Container,Box,Grid,Typography,Slide} from "@mui/material";
 import SubmitButton from "./Parts/SubmitButton";
 import Modal from "./Modal";
 const CreatePage = () => {
+    const section = {
+        position: "relative",
+    }
     return (
         <Provider store = {store}>    
             <Grid container spacing={0} sx={{backgroundColor:"#FFFFFF",border:"5px ridge #BBBBBB",width:"90%",margin:"30px auto 60px auto",borderRadius:20,boxShadow: "5px 8px 0px 5px rgba(0,0,0,0.6)"}}>

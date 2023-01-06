@@ -1,7 +1,7 @@
 import { Chart as Chartjs, registerables } from "chart.js";
 import { useSelector } from "react-redux";
 import { Chart} from "react-chartjs-2";
-import {Typography} from "@mui/material";
+import {Typography,Box} from "@mui/material";
 
 Chartjs.register(...registerables);
 
@@ -49,6 +49,17 @@ const Preview = (props) => {
             return convertLineDataset(dataset)
         })
     };
+    const center = {
+        position: "relative",
+        right: "50%",
+        bottom: "50%",
+        width: "calc(100% - 20px)",
+        maxWidth: "600px",
+        maxHeight: "calc(100% - 20px)",
+        overflowY: "auto",
+        transform: "translate(50%,50%)",
+    }
+    
     const lineOptions = {
         maintainAspectRatio:false,
         responsive:true,
@@ -82,21 +93,23 @@ const Preview = (props) => {
             },
         },
     };
-
+    
     return (
-        <>
-            <Typography variant="p">preview</Typography>             
-            <div>
-                <Chart
-                    width={props.width}
-                    height={props.height}
-                    data={graph}
-                    options={lineOptions}
-                    id="chart-key"                
-                /> 
-            </div>
-            <p>{JSON.stringify(graphData)}</p>
-        </>
+        <div style={{backgroundColor:"none",height:"100%",position:"relative"}}>
+            <div style={{backgroundColor:"white",position:"sticky",top:"40px"}}>
+                <Typography variant="p">preview</Typography>             
+                <div>
+                    <Chart
+                        width={props.width}
+                        height={props.height}
+                        data={graph}
+                        options={lineOptions}
+                        id="chart-key"                
+                    /> 
+                </div>
+                <p>{JSON.stringify(graphData)}</p>
+            </div>            
+        </div>
     );
 }
 

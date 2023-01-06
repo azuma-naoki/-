@@ -22,7 +22,7 @@ const LineGraphForm = () => {
                 </Grid>     
                 <Grid item xs={12}>
                     <DeleteButton label="-" index={index} setIndex={setIndex}/>
-                    <AddButton label="+"/>
+                    <AddButton label="+" index={index} setIndex={setIndex} datasetsSize={datasets.length}/>
                 </Grid>
                 <Grid item xs={12}>                        
                     <FileInput label="xdata:" val={"xdata"} index={-1}/><p></p>
@@ -33,8 +33,8 @@ const LineGraphForm = () => {
                 <Grid item xs={12} >
                     <TextBox label="凡例:" val={"legend"} value={datasets[index].legend} index={index}/>
                 </Grid>
-                <Grid item xs={12}>
-                    <ColorPicker label="色を選択 " val={"color"} value={datasets[index].color} index={index}/>
+                <Grid item xs={12}>                    
+                    <ColorPicker label="線の色 " val={"color"} value={datasets[index].color} index={index}/>
                 </Grid>   
                 <Grid item xs={12}>
                     <SingleSelect label="線のスタイル" val={"linestyle"} value={datasets[index].linestyle} index={index} options={{values:["solid","dashed","dotted","dashdot"],displays:["solid","dashed","dotted","dashdot"]}}/>

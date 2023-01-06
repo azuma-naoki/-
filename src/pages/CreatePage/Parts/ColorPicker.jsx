@@ -1,22 +1,22 @@
 import {useDispatch} from "react-redux"
 import {write} from "../store/modules/graphData";
-// import 
+import {SketchPicker,CirclePicker,GooglePicker,CompactPicker,TwitterPicker} from "react-color";
+import {Typography} from "@mui/material";
+
 const ColorPicker = (props) => {
     const dispatch = useDispatch();
-    const onChange = (event) => {        
+    const onChange = (color) => {        
         const action = write({
             propertyName:props.val, 
             index: props.index,
-            newValue: event.target.value,
+            newValue: color.hex,
         });
         dispatch(action)    
     }
     return (
-        <>
-            <label>
-                {props.label}
-                <input type="color" value={props.value} onChange={onChange}/>
-            </label>
+        <>        
+            <Typography variant="caption" sx={{}}>{props.label}</Typography>                       
+            <CirclePicker onChange={onChange} width={250} circleSpacing={10}/>
         </>
     )
 }
