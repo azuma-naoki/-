@@ -33,7 +33,7 @@ const LineGraphForm = () => {
                     <ColorPicker label="色を選択 " val={"color"} value={graphData.datasets[index].color} index={index}/>
                 </Grid>   
                 <Grid item xs={12}>
-                    <SingleSelect label="線のスタイル" val={"linestyle"} index={index} options={{values:["solid","dashed","dotted"],displays:["solid","dashed","dotted"]}}/>
+                    <SingleSelect label="線のスタイル" val={"linestyle"} value={graphData.datasets[index].linestyle} index={index} options={{values:["solid","dashed","dotted"],displays:["solid","dashed","dotted"]}}/>
                 </Grid>     
                 <Grid item xs={12} >
                     <TextBox label="タイトル:" val={"title"} index={-1}/>
