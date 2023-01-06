@@ -95,8 +95,8 @@ const Preview = (props) => {
     };
     
     return (
-        <div style={{backgroundColor:"none",height:"100%",position:"relative"}}>
-            <div style={{backgroundColor:"white",position:"sticky",top:"40px"}}>
+        <div style={{backgroundColor:"pink",height:"100%",position:"relative",width:"100%"}}>
+            <div style={{backgroundColor:"#fffbff",position:"sticky",top:"40px",padding:"15px" ,border:"0px solid pink"}}>
                 <Typography variant="p">preview</Typography>             
                 <div>
                     <Chart
