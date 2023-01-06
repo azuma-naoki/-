@@ -13,7 +13,7 @@ const TextBox = (props) => {
     }
     return (
         <>
-            <TextField id="standard-basic" label={props.label} variant="standard" onChange={onChange}/>
+            <TextField id="standard-basic" label={props.label} value={props.value} variant="standard" onChange={onChange}/>
         </>
     )
 }

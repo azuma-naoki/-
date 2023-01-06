@@ -1,20 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit"
 import {produce} from "immer";
-const graphData = createSlice({
-    name: "graphData",
-    initialState: {
-        grid:false,
-        datasets:[
-            {linestyle:"solid", color:"#0084ff"},
-            {linestyle:"solid", color:"#0084ff"},
-            {linestyle:"solid", color:"#0084ff"},
-            {linestyle:"solid", color:"#0084ff"},
-            {linestyle:"solid", color:"#0084ff"},
-        ]
+import {graphNum} from "../../const";
+
+const initialStates = {
+    line: {
+        linestyle:"solid", 
+        color:"#0084ff",    
+        ydata:[1,2,3,4,5],
+        legend:"",
     },
+}
+
+const graphData = createSlice({
+    name: "graphData",            
+    initialState: {
+        grid:false,    
+        xdata:[1,2,3,4,5],
+        datasets:createArray(graphNum, initialStates.line),    
+    },    
     reducers: {
         write(state,{payload}) {
-            const newState = produce(state, draft => {
+            const newState = produce(state, draft => { 
                 if(payload.index === -1) {
                     draft[payload.propertyName] = payload.newValue;
                 } else {
@@ -23,11 +29,16 @@ const graphData = createSlice({
             });
             return newState;
         },
-        addData(state,{type,payload}) {
-            
-        }
     }
 })
+
+function createArray(num,init) {
+    const result = [];
+    for(let i = 0;i < num; i++) {
+        result.push(init);
+    }
+    return result;
+}
 
 const {write} = graphData.actions;
 
