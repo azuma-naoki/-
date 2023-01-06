@@ -2,24 +2,28 @@ import FileInput from "../Parts/FileInput";
 import ColorPicker from "../Parts/ColorPicker";
 import TextBox from "../Parts/TextBox";
 import SingleCheckbox from "../Parts/SingleCheckbox";
-import SingleSwitch from "../Parts/SingleSwitch";
 import SingleSelect from "../Parts/SingleSelect";
 import GraphSwitch from "../Parts/GraphSwitch";
+import DeleteButton from "../Parts/DeleteButton";
 import {Grid, Typography} from "@mui/material";
 import {useState} from "react";
 import {useSelector} from "react-redux";
-import {graphNum} from "../const";
+import AddButton from "../Parts/AddButton";
 
 const LineGraphForm = () => {
     const [index, setIndex] = useState(0);
-    const graphData = useSelector(state => state.graphData);
+    const datasets = useSelector(state => state.graphData.datasets);
     return (        
-        <>            
+        <>   
             <Grid container spacing={3}>
                 <Typography variant="p">グラフ{index+1}</Typography>    
                 <Grid item xs={12}>
-                    <GraphSwitch states={[index,setIndex]} label="グラフ" options={{values:arange(0,graphNum,1),displays:arange(1,graphNum + 1,1)}}/>
+                    <GraphSwitch states={[index,setIndex]} label="グラフ" options={{values:arange(0,datasets.length,1),displays:arange(1,datasets.length + 1,1)}}/>
                 </Grid>     
+                <Grid item xs={12}>
+                    <DeleteButton label="-" index={index} setIndex={setIndex}/>
+                    <AddButton label="+"/>
+                </Grid>
                 <Grid item xs={12}>                        
                     <FileInput label="xdata:" val={"xdata"} index={-1}/><p></p>
                 </Grid>
@@ -27,13 +31,13 @@ const LineGraphForm = () => {
                     <FileInput label="ydata:" val={"ydata"} index={index}/><p></p>
                 </Grid>
                 <Grid item xs={12} >
-                    <TextBox label="凡例:" val={"legend"} value={graphData.datasets[index].legend} index={index}/>
+                    <TextBox label="凡例:" val={"legend"} value={datasets[index].legend} index={index}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <ColorPicker label="色を選択 " val={"color"} value={graphData.datasets[index].color} index={index}/>
+                    <ColorPicker label="色を選択 " val={"color"} value={datasets[index].color} index={index}/>
                 </Grid>   
                 <Grid item xs={12}>
-                    <SingleSelect label="線のスタイル" val={"linestyle"} value={graphData.datasets[index].linestyle} index={index} options={{values:["solid","dashed","dotted","dashdot"],displays:["solid","dashed","dotted","dashdot"]}}/>
+                    <SingleSelect label="線のスタイル" val={"linestyle"} value={datasets[index].linestyle} index={index} options={{values:["solid","dashed","dotted","dashdot"],displays:["solid","dashed","dotted","dashdot"]}}/>
                 </Grid>     
                 <Grid item xs={12} >
                     <TextBox label="タイトル" val={"title"} index={-1}/>
@@ -48,8 +52,9 @@ const LineGraphForm = () => {
                     <SingleCheckbox label="Gridを表示" val={"grid"} index={-1}/>
                 </Grid>         
                 <Grid item xs={12}/>       
-            </Grid>    
+            </Grid>                
         </>
+            
     )
 }
 

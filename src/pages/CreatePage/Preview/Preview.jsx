@@ -1,7 +1,7 @@
 import { Chart as Chartjs, registerables } from "chart.js";
 import { useSelector } from "react-redux";
-import { Chart,Line } from "react-chartjs-2";
-import {Typography,Box,Zoom,Slide} from "@mui/material";
+import { Chart} from "react-chartjs-2";
+import {Typography} from "@mui/material";
 
 Chartjs.register(...registerables);
 
@@ -24,27 +24,32 @@ const convertLineStyle = (linestyle) => {
 const convertLineDataset = (dataset) => {
     const pushProperty = (obj, property, value) => {
         if(!value) return;
-        obj[property] = value;
+        obj[property] = value;        
     }
-    const chartjsDataset = {               
+    const chartjsDataset = {          
+        // type: "bar",
+        // data: dataset.ydata ? dataset.ydata: [],
+        // label: dataset.legend,
+        // borderColor: dataset.color,
+        // borderDash: convertLineStyle(dataset.linestyle),
     };
-    pushProperty(chartjsDataset,"type","line");
-    pushProperty(chartjsDataset,"data", dataset.ydata);
-    pushProperty(chartjsDataset,"label",dataset.legend);
-    pushProperty(chartjsDataset,"borderColor",dataset.color);
-    pushProperty(chartjsDataset,"borderDash",convertLineStyle(dataset.linestyle));
+    pushProperty(chartjsDataset,"type", "line");
+    pushProperty(chartjsDataset,"data",  dataset.ydata);
+    pushProperty(chartjsDataset,"label", dataset.legend);
+    pushProperty(chartjsDataset,"borderColor", dataset.color);
+    pushProperty(chartjsDataset,"borderDash", convertLineStyle(dataset.linestyle));
     return chartjsDataset;
 }
 
 const Preview = (props) => {
     const graphData = useSelector(state => state.graphData);
-
     const graph = {
         labels:graphData.xdata, //xdata
-        datasets: graphData.datasets.map(dataset => convertLineDataset(dataset))
+        datasets: graphData.datasets.map((dataset) => {
+            return convertLineDataset(dataset)
+        })
     };
-
-    const options = {
+    const lineOptions = {
         maintainAspectRatio:false,
         responsive:true,
         plugins: { 
@@ -86,7 +91,7 @@ const Preview = (props) => {
                     width={props.width}
                     height={props.height}
                     data={graph}
-                    options={options}
+                    options={lineOptions}
                     id="chart-key"                
                 /> 
             </div>

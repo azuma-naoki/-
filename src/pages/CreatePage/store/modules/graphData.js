@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit"
 import {produce} from "immer";
-import {graphNum} from "../../const";
 
 const initialStates = {
     line: {
         linestyle:"solid", 
         color:"#0084ff",    
-        ydata:[1,2,3,4,5],
         legend:"",
     },
 }
@@ -15,8 +13,7 @@ const graphData = createSlice({
     name: "graphData",            
     initialState: {
         grid:false,    
-        xdata:[1,2,3,4,5],
-        datasets:createArray(graphNum, initialStates.line),    
+        datasets:createArray(1, initialStates.line),    
     },    
     reducers: {
         write(state,{payload}) {
@@ -29,6 +26,24 @@ const graphData = createSlice({
             });
             return newState;
         },
+        deleteDataset(state, {payload}) {
+            if(state.datasets.length <= 1) {
+                return;
+            }
+            const newState = produce(state, draft => {                             
+                draft.datasets.splice(payload.index,1);
+            });
+            return newState;
+        },
+        addDataset(state, {payload}) {
+            if(state.datasets.length >= 5) {
+                return;
+            }
+            const newState = produce(state, draft => {                             
+                draft.datasets.push(initialStates.line);
+            });
+            return newState;
+        }
     }
 })
 
@@ -40,7 +55,7 @@ function createArray(num,init) {
     return result;
 }
 
-const {write} = graphData.actions;
+const {write,deleteDataset,addDataset} = graphData.actions;
 
-export {write}
+export {write,deleteDataset,addDataset}
 export default graphData.reducer
