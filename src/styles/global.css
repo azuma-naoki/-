@@ -1,0 +1,13 @@
+body {
+    background-color: #D3E9F5;
+    background-image: url(../images/sen-simple53.png);
+    /* opacity: 0.5; */
+    background-position: center top;
+}
+
+.display {
+    background-image: url(../images/sen-simple53.png);
+    background-color:rgba(255,255,255,0.5);
+    background-blend-mode:soft-light;
+    /* mix-blend-mode: screen; */
+}

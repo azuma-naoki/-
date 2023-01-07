@@ -2,6 +2,7 @@ import { Chart as Chartjs, registerables } from "chart.js";
 import { useSelector } from "react-redux";
 import { Chart} from "react-chartjs-2";
 import {Typography,Box} from "@mui/material";
+import backgroundImage from "../../../images/background.png";
 
 Chartjs.register(...registerables);
 
@@ -81,9 +82,9 @@ const Preview = (props) => {
     };
     
     return (
-        <Box sx={{backgroundColor:"#affffa",height:"100%",position:"relative",width:"100%"}}>
+        <Box className="display" sx={{height:"100%",position:"relative",width:"100%"}}>
             <Box sx={{backgroundColor:"#ffffff",position:"sticky",top:"40px",margin:0,padding:"20px" ,borderRight:"1px dashed black"}}>
-                <Typography variant="p" sx={{color:"#00bbb0"}}>preview</Typography>             
+                <Typography variant="h7" sx={{color:"#e91e63"}}>preview</Typography>             
                 <div>
                     <Chart
                         width={props.width}

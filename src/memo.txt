@@ -1,0 +1,15 @@
+{
+    "grid":bool,
+    "title":str,
+    "xLabel":str,
+    "yLabel":str,
+    datasets:[
+        {
+            type:str,
+        },
+        {
+
+        },
+
+    ]
+}

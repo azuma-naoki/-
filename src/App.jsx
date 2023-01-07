@@ -3,6 +3,7 @@ import Header from "./Components/Header";
 import MainContents from "./pages/MainContents";
 import RenderGraph from "./pages/RenderGraph";
 import CreatePage from "./pages/CreatePage/CreatePage";
+import "./styles/global.css" 
 
 function Main() {
   return (
