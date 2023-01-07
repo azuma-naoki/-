@@ -15,14 +15,16 @@ const LineGraphForm = () => {
     const datasets = useSelector(state => state.graphData.datasets);
     return (        
         <>   
-            <Grid container spacing={3}>
-                <Typography variant="p">グラフ{index+1}</Typography>    
+            <Grid container spacing={4}>
+                {/* <Typography variant="p">グラフ{index+1}</Typography>     */}
                 <Grid item xs={12}>
                     <GraphSwitch states={[index,setIndex]} label="グラフ" options={{values:arange(0,datasets.length,1),displays:arange(1,datasets.length + 1,1)}}/>
                 </Grid>     
-                <Grid item xs={12}>
-                    <DeleteButton label="-" index={index} setIndex={setIndex}/>
-                    <AddButton label="+" index={index} setIndex={setIndex} datasetsSize={datasets.length}/>
+                <Grid item xs={6}>
+                    <DeleteButton label="グラフを削除" index={index} setIndex={setIndex}/>                    
+                </Grid>
+                <Grid item xs={6}>
+                    <AddButton label="グラフを追加" index={index} setIndex={setIndex} datasetsSize={datasets.length}/>
                 </Grid>
                 <Grid item xs={12}>                        
                     <FileInput label="xdata:" val={"xdata"} index={-1}/><p></p>
@@ -39,13 +41,19 @@ const LineGraphForm = () => {
                 <Grid item xs={12}>
                     <SingleSelect label="線のスタイル" val={"linestyle"} value={datasets[index].linestyle} index={index} options={{values:["solid","dashed","dotted","dashdot"],displays:["solid","dashed","dotted","dashdot"]}}/>
                 </Grid>     
+                <Grid item xs={6}>
+                    <SingleSelect label="マーカーのスタイル" val={"pointStyle"} value={datasets[index].pointStyle} index={index} options={{values:["circle","cross","crossRot","rect","star"],displays:["circle","cross","crossRot","rect","star"]}}/>
+                </Grid>   
+                <Grid item xs={6}>
+                    <SingleSelect label="マーカーの大きさ" val={"pointRadius"} value={datasets[index].pointRadius} index={index} options={{values:[0.1,4,8,12],displays:["なし","小","中","大"]}}/>
+                </Grid>   
                 <Grid item xs={12} >
                     <TextBox label="タイトル" val={"title"} index={-1}/>
                 </Grid>
-                <Grid item xs={12} >
+                <Grid item xs={6} >
                     <TextBox label="xLabel" val={"xLabel"} index={-1}/>
                 </Grid>
-                <Grid item xs={12} >
+                <Grid item xs={6} >
                     <TextBox label="yLabel" val={"yLabel"} index={-1}/>
                 </Grid>
                 <Grid item xs={12}>

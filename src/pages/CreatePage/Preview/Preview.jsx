@@ -38,6 +38,8 @@ const convertLineDataset = (dataset) => {
     pushProperty(chartjsDataset,"label", dataset.legend);
     pushProperty(chartjsDataset,"borderColor", dataset.color);
     pushProperty(chartjsDataset,"borderDash", convertLineStyle(dataset.linestyle));
+    pushProperty(chartjsDataset,"pointStyle", dataset.pointStyle);
+    pushProperty(chartjsDataset,"pointRadius", dataset.pointRadius);
     return chartjsDataset;
 }
 
@@ -49,17 +51,6 @@ const Preview = (props) => {
             return convertLineDataset(dataset)
         })
     };
-    const center = {
-        position: "relative",
-        right: "50%",
-        bottom: "50%",
-        width: "calc(100% - 20px)",
-        maxWidth: "600px",
-        maxHeight: "calc(100% - 20px)",
-        overflowY: "auto",
-        transform: "translate(50%,50%)",
-    }
-    
     const lineOptions = {
         maintainAspectRatio:false,
         responsive:true,
@@ -95,9 +86,9 @@ const Preview = (props) => {
     };
     
     return (
-        <div style={{backgroundColor:"pink",height:"100%",position:"relative",width:"100%"}}>
-            <div style={{backgroundColor:"#fffbff",position:"sticky",top:"40px",padding:"15px" ,border:"0px solid pink"}}>
-                <Typography variant="p">preview</Typography>             
+        <Box sx={{backgroundColor:"#ffeeff",height:"100%",position:"relative",width:"100%"}}>
+            <Box sx={{backgroundColor:"#fffbff",position:"sticky",top:"40px",padding:"15px" ,border:"0px solid pink"}}>
+                <Typography variant="p" sx={{color:"#ff66ee"}}>preview</Typography>             
                 <div>
                     <Chart
                         width={props.width}
@@ -107,9 +98,9 @@ const Preview = (props) => {
                         id="chart-key"                
                     /> 
                 </div>
-                <p>{JSON.stringify(graphData)}</p>
-            </div>            
-        </div>
+                <p>{JSON.stringify(graphData, null, 2)}</p>
+            </Box>            
+        </Box>
     );
 }
 

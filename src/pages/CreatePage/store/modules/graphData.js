@@ -1,14 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import {produce} from "immer";
-import {maxIndex} from "../../const";
-
-const initialStates = {
-    line: {
-        linestyle:"solid", 
-        color:"#0084ff",    
-        legend:"",
-    },
-}
+import {maxIndex,initialStates} from "../../const";
 
 const graphData = createSlice({
     name: "graphData",            
