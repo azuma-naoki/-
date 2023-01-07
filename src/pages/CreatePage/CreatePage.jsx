@@ -12,8 +12,8 @@ const CreatePage = () => {
     return (
         <Provider store = {store}>   
             <Fade in={true} timeout={{appear:1000,enter:1500,exit:1000}}>
-            <Grid container spacing={0} sx={{backgroundColor:"#FFFFFF",border:"5px ridge #BBBBBB",width:"90%",margin:"30px auto 60px auto",borderRadius:20,boxShadow: "5px 8px 0px 5px rgba(0,0,0,0.6)"}}>
-                <Grid container spacing={0} sx={{backgroundColor:"white",border:"5px solid #AAAAAA",margin:"40px 100px 320px 100px"}}> {/* 画面 */}
+            <Grid container spacing={0} sx={{backgroundColor:"#FFFFFF",border:"5px solid #bbbbbb",width:"90%",margin:"30px auto 60px auto",borderRadius:20,boxShadow: "5px 8px 0px 5px #00d6e0"}}>
+                <Grid container spacing={0} sx={{backgroundColor:"white",border:"5px solid #dddddd",margin:"40px 100px 320px 100px"}}> {/* 画面 */}
                     <Grid item xs={8} sx={{backgroundColor:"none"}}>                    
                         <Preview height={400}/>
                     </Grid>
