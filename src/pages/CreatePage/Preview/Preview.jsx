@@ -26,12 +26,7 @@ const convertLineDataset = (dataset) => {
         if(!value) return;
         obj[property] = value;        
     }
-    const chartjsDataset = {          
-        // type: "bar",
-        // data: dataset.ydata ? dataset.ydata: [],
-        // label: dataset.legend,
-        // borderColor: dataset.color,
-        // borderDash: convertLineStyle(dataset.linestyle),
+    const chartjsDataset = {
     };
     pushProperty(chartjsDataset,"type", "line");
     pushProperty(chartjsDataset,"data",  dataset.ydata);
@@ -86,9 +81,9 @@ const Preview = (props) => {
     };
     
     return (
-        <Box sx={{backgroundColor:"#ffeeff",height:"100%",position:"relative",width:"100%"}}>
-            <Box sx={{backgroundColor:"#fffbff",position:"sticky",top:"40px",padding:"15px" ,border:"0px solid pink"}}>
-                <Typography variant="p" sx={{color:"#ff66ee"}}>preview</Typography>             
+        <Box sx={{backgroundColor:"#affffa",height:"100%",position:"relative",width:"100%"}}>
+            <Box sx={{backgroundColor:"#ffffff",position:"sticky",top:"40px",margin:0,padding:"20px" ,borderRight:"1px dashed black"}}>
+                <Typography variant="p" sx={{color:"#00bbb0"}}>preview</Typography>             
                 <div>
                     <Chart
                         width={props.width}

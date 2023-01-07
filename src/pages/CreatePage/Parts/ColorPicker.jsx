@@ -1,7 +1,7 @@
 import {useDispatch} from "react-redux"
 import {write} from "../store/modules/graphData";
 import {SketchPicker,CirclePicker,GooglePicker,CompactPicker,TwitterPicker} from "react-color";
-import {Typography} from "@mui/material";
+import {Typography,Box} from "@mui/material";
 
 const ColorPicker = (props) => {
     const dispatch = useDispatch();
@@ -13,10 +13,12 @@ const ColorPicker = (props) => {
         });
         dispatch(action)    
     }
-    return (
+    return(
         <>        
             <Typography variant="caption" sx={{}}>{props.label}</Typography>                       
-            <CirclePicker onChange={onChange} width={250} circleSpacing={10}/>
+            <Box sx={{marginTop:1, marginBottom:1}}>
+                <CirclePicker onChange={onChange} width={250} circleSpacing={10}/>
+            </Box>
         </>
     )
 }
