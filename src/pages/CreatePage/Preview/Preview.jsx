@@ -84,7 +84,7 @@ const Preview = (props) => {
     return (
         <Box className="display" sx={{height:"100%",position:"relative",width:"100%"}}>
             <Box sx={{backgroundColor:"#ffffff",position:"sticky",top:"40px",margin:0,padding:"20px" ,borderRight:"1px dashed black"}}>
-                <Typography variant="h7" sx={{color:"#e91e63"}}>preview</Typography>             
+                <Typography variant="h7" sx={{background:"#eeffff", color:"#e91e63"}}>preview</Typography>             
                 <div>
                     <Chart
                         width={props.width}
