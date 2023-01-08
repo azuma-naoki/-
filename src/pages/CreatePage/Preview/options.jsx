@@ -17,6 +17,15 @@ export const options = (graphData) => {
         },
         bubble: {
             scales:scales(graphData)["bubble"],
+        },
+        pie: {
+            scales:scales(graphData)["pie"],                          
+        },
+        doughnut: {
+            scales:scales(graphData)["doughnut"]
+        },
+        polarArea: {
+            scales:scales(graphData)["polarArea"]   
         }
     }
 }

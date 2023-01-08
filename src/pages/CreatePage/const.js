@@ -20,5 +20,15 @@ export const initialStates = {
     },
     bubble: {
         type:"bubble",
+    },
+    pie: {
+        type:"pie",
+    },
+    doughnut: {
+        type:"doughnut",
+    },
+    polarArea: {
+        type:"polarArea"
     }
+
 }

@@ -82,5 +82,11 @@ export const scales = (graphData) => {
                 }
             },
         },
+        pie: {
+        },
+        doughnut: {          
+        },
+        polarArea: {
+        },
     }
 }

@@ -41,7 +41,6 @@ const graphData = createSlice({
             return newState;
         },
         resetState(state, {payload}) {
-            console.log("a");
             const newState = {
                 ...initialStates.common,  
                 datasets:[payload.initialState]

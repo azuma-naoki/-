@@ -1,6 +1,6 @@
 
 // charts.js形式に変換
-export const converter = (dataset, graphType) => {
+export const converter = (graphData,dataset, graphType) => {
     const chartjsDataset = {
     };
     if(!dataset) {
@@ -36,9 +36,21 @@ export const converter = (dataset, graphType) => {
             pushProperty(chartjsDataset,"label", dataset.legend);
             pushProperty(chartjsDataset,"backgroundColor", dataset.color);
             pushProperty(chartjsDataset,"pointStyle", dataset.pointStyle);
-        },        
+        },       
+        pie: (dataset) => {
+            pushProperty(chartjsDataset,"type", "pie");            
+            pushProperty(chartjsDataset,"data", dataset.data);                        
+        },   
+        doughnut: (dataset) => {
+            pushProperty(chartjsDataset,"type", "doughnut");            
+            pushProperty(chartjsDataset,"data", dataset.data);                        
+        },      
+        polarArea: (dataset) => {
+            pushProperty(chartjsDataset,"type", "polarArea");            
+            pushProperty(chartjsDataset,"data", dataset.data);                        
+        },       
     }
-
+    
     if(converters[graphType]) {
         converters[graphType](dataset);
     } else {
@@ -57,7 +69,6 @@ function createBubbleData(xdata,ydata,rdata) {
     for(let i = 0; i < Math.min(xdata.length,ydata.length,rdata.length); i++) {
         data.push({x:xdata[i], y:ydata[i], r:rdata[i]});
     }
-    console.log(data);
     return data;
 }
 
@@ -69,7 +80,6 @@ function createScatterData(xdata,ydata) {
     for(let i = 0; i < Math.min(xdata.length,ydata.length); i++) {
         data.push({x:xdata[i], y:ydata[i]});
     }
-    console.log(data);
     return data;
 }
 

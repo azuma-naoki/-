@@ -12,6 +12,9 @@ import AddButton from "../Parts/AddButton";
 import GraphTypeSelector from "../Parts/GraphTypeSelector";
 import ScatterGraphForm from "../Form/ScatterGraphForm";
 import BubbleGraphForm from "../Form/BubbleGraphForm";
+import PieGraphForm from "../Form/PieGraphForm";
+import DoughnutGraphForm from "../Form/DoughnutGraphForm";
+import PolarAreaGraphForm from "../Form/PolarAreaGraphForm";
 
 
 // graphForm作成のフロー
@@ -20,7 +23,8 @@ import BubbleGraphForm from "../Form/BubbleGraphForm";
 // converter.jsxにてconverterを登録
 // scales.jsxにてscaleを登録
 // options.jsxにてoptionを登録
-// const.jsxにて初期値を登録
+// const.jsにて初期値を登録
+//pie系の場合はpreviewのchartsに注意
 
 const GraphForm = (props) => {
     const [index, setIndex] = useState(0);
@@ -79,6 +83,14 @@ function renderGraphForm(graphType,index,graphData) {
             return <ScatterGraphForm index={index} graphData={graphData}/>    
         case "bubble":
             return <BubbleGraphForm index={index} graphData={graphData}/>
+        case "pie":
+            return <PieGraphForm index={index} graphData={graphData}/>
+        case "doughnut":
+            return <DoughnutGraphForm index={index} graphData={graphData}/>
+        case "polarArea":
+            return <PolarAreaGraphForm index={index} graphData={graphData}/>
+        // case "bubble":
+        //     return <BubbleGraphForm index={index} graphData={graphData}/>
         default:
             return <></>
     }
