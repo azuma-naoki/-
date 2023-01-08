@@ -5,10 +5,10 @@ import {maxIndex,initialStates} from "../../const";
 const graphData = createSlice({
     name: "graphData",            
     initialState: {
-        grid:false,    
+        ...initialStates.common,  
         datasets:[{
             type:"line",
-            // ...initialStates.line,
+            ...initialStates.line,
         }]
     },    
     reducers: {
@@ -43,7 +43,9 @@ const graphData = createSlice({
         resetState(state, {payload}) {
             console.log("a");
             const newState = {
-                datasets:[payload.initialState]}
+                ...initialStates.common,  
+                datasets:[payload.initialState]
+            }
             ;
             return newState;
         }

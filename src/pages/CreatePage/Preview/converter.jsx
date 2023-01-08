@@ -20,23 +20,58 @@ export const converter = (dataset, graphType) => {
             pushProperty(chartjsDataset,"type", "bar");
             pushProperty(chartjsDataset,"data",  dataset.ydata);
             pushProperty(chartjsDataset,"label", dataset.legend);
-            pushProperty(chartjsDataset,"borderColor", dataset.color);
-            pushProperty(chartjsDataset,"borderDash", convertLineStyle(dataset.linestyle));
+            pushProperty(chartjsDataset,"backgroundColor", dataset.color);
+        },
+        scatter: (dataset) => {
+            pushProperty(chartjsDataset,"type", "scatter");
+            pushProperty(chartjsDataset,"data",  createScatterData(dataset.xdata,dataset.ydata));
+            pushProperty(chartjsDataset,"label", dataset.legend);
+            pushProperty(chartjsDataset,"backgroundColor", dataset.color);
             pushProperty(chartjsDataset,"pointStyle", dataset.pointStyle);
             pushProperty(chartjsDataset,"pointRadius", dataset.pointRadius);
-        }
+        },        
+        bubble: (dataset) => {
+            pushProperty(chartjsDataset,"type", "bubble");
+            pushProperty(chartjsDataset,"data", createBubbleData(dataset.xdata,dataset.ydata,dataset.rdata));
+            pushProperty(chartjsDataset,"label", dataset.legend);
+            pushProperty(chartjsDataset,"backgroundColor", dataset.color);
+            pushProperty(chartjsDataset,"pointStyle", dataset.pointStyle);
+        },        
     }
+
     if(converters[graphType]) {
         converters[graphType](dataset);
     } else {
         converters["line"](dataset);
-        console.log(`${graphType}のデータセセットコンバーターが存在しませんのでlineで代用します`);
+        console.log(`${graphType}のデータセットコンバーターが存在しませんのでlineで代用します`);
     }
     
     return chartjsDataset;
 }
 
+function createBubbleData(xdata,ydata,rdata) {
+    const data = [];
+    if(!xdata || !ydata || !rdata) {
+        return;
+    }
+    for(let i = 0; i < Math.min(xdata.length,ydata.length,rdata.length); i++) {
+        data.push({x:xdata[i], y:ydata[i], r:rdata[i]});
+    }
+    console.log(data);
+    return data;
+}
 
+function createScatterData(xdata,ydata) {
+    const data = [];
+    if(!xdata || !ydata) {
+        return;
+    }
+    for(let i = 0; i < Math.min(xdata.length,ydata.length); i++) {
+        data.push({x:xdata[i], y:ydata[i]});
+    }
+    console.log(data);
+    return data;
+}
 
 function convertLineStyle(linestyle) {
     switch(linestyle) {

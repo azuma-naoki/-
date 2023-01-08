@@ -10,6 +10,8 @@ import DeleteButton from "../Parts/DeleteButton";
 import SingleSelect from "../Parts/SingleSelect";
 import AddButton from "../Parts/AddButton";
 import GraphTypeSelector from "../Parts/GraphTypeSelector";
+import ScatterGraphForm from "../Form/ScatterGraphForm";
+import BubbleGraphForm from "../Form/BubbleGraphForm";
 
 
 // graphForm作成のフロー
@@ -17,9 +19,8 @@ import GraphTypeSelector from "../Parts/GraphTypeSelector";
 // renderGraphFormにXGraphFormコンポーネントを登録
 // converter.jsxにてconverterを登録
 // scales.jsxにてscaleを登録
-
-// 将来やること
-// graphTypeが切り替わるごとにdatasetをリセット
+// options.jsxにてoptionを登録
+// const.jsxにて初期値を登録
 
 const GraphForm = (props) => {
     const [index, setIndex] = useState(0);
@@ -73,7 +74,11 @@ function renderGraphForm(graphType,index,graphData) {
         case "line":
             return <LineGraphForm index={index} graphData={graphData}/>     
         case "bar":
-            return  <BarGraphForm index={index} graphData={graphData}/>     
+            return <BarGraphForm index={index} graphData={graphData}/>     
+        case "scatter":
+            return <ScatterGraphForm index={index} graphData={graphData}/>    
+        case "bubble":
+            return <BubbleGraphForm index={index} graphData={graphData}/>
         default:
             return <></>
     }
