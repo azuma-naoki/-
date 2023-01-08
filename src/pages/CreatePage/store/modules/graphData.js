@@ -6,7 +6,10 @@ const graphData = createSlice({
     name: "graphData",            
     initialState: {
         grid:false,    
-        datasets:createArray(1, initialStates.line),    
+        datasets:[{
+            type:"",
+            ...initialStates.line,
+        }]
     },    
     reducers: {
         write(state,{payload}) {

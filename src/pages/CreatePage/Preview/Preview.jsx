@@ -40,25 +40,15 @@ const convertLineDataset = (dataset) => {
 }
 
 const Preview = (props) => {
+    const graphType = props.graphType;
     const graphData = useSelector(state => state.graphData);
     const graph = {
         labels:graphData.xdata, //xdata
         datasets: graphData.datasets.map((dataset) => {
-            return convertLineDataset(dataset)
+            return switchGraphConverter(graphType,dataset);
         })
     };
-    const lineOptions = {
-        maintainAspectRatio:false,
-        responsive:true,
-        plugins: { 
-            title: {
-                display: true,
-                text: graphData.title,
-                font: {
-                    size: 15
-                }
-            },
-        }, 
+    const lineScales = {
         scales: {            
             x: {
                 title:{
@@ -80,17 +70,51 @@ const Preview = (props) => {
             },
         },
     };
+    function switchGraphConverter(graphType,dataset) {
+        switch(graphType) {
+            case "line":
+                return convertLineDataset(dataset);
+            default:
+                return convertLineDataset(dataset);
+        }
+    }
+
+    const switchScales = (graphType) => {
+        switch(graphType) {
+            case "line":
+                return lineScales;
+            default:
+                return lineScales;
+        }
+    }
+
+    const chartOptions = {
+        maintainAspectRatio:false,
+        responsive:true,
+        plugins: { 
+            title: {
+                display: true,
+                text: graphData.title,
+                font: {
+                    size: 15
+                }
+            },
+        }, 
+    }
     
     return (
         <Box className="display" sx={{height:"100%",position:"relative",width:"100%"}}>
-            <Box sx={{backgroundColor:"#ffffff",position:"sticky",top:"40px",margin:0,padding:"20px" ,borderRight:"1px dashed black"}}>
+            <Box sx={{backgroundColor:"#ffffff",position:"sticky",top:"40px",margin:0,padding:"20px" ,borderRight:"1px dashed black", borderBottom:"3px solid #eeeeee", borderTop:"3px solid #eeeeee"}}>
                 <Typography variant="h7" sx={{background:"#eeffff", color:"#e91e63"}}>preview</Typography>             
                 <div>
                     <Chart
                         width={props.width}
                         height={props.height}
                         data={graph}
-                        options={lineOptions}
+                        options={{                      
+                            ...switchScales(graphType),                                                       
+                            ...chartOptions,
+                        }}
                         id="chart-key"                
                     /> 
                 </div>

@@ -5,7 +5,7 @@ import SingleCheckbox from "../Parts/SingleCheckbox";
 import SingleSelect from "../Parts/SingleSelect";
 import {Grid, Typography} from "@mui/material";
 
-const LineGraphForm = (props) => {
+const BarGraphForm = (props) => {
     const index = props.index;
     const datasets = props.datasets;
     return (        
@@ -52,4 +52,4 @@ const LineGraphForm = (props) => {
 }
 
 
-export default LineGraphForm;
+export default BarGraphForm;
