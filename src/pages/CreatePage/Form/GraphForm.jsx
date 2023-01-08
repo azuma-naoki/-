@@ -1,4 +1,5 @@
 import LineGraphForm from "./LineGraphForm";
+import BarGraphForm from "./BarGraphForm";
 import {useState} from "react";
 import SubmitButton from "../Parts/SubmitButton";
 import Modal from "../Modal";
@@ -14,9 +15,8 @@ import GraphTypeSelector from "../Parts/GraphTypeSelector";
 // graphForm作成のフロー
 // XGraphFromコンポーネントを作成
 // renderGraphFormにXGraphFormコンポーネントを登録
-// preview.jsxにてconvertXDataset,xScalesを作成
-// switchGraphConverterにてconvertXDatasetを登録
-// switchScalesにてxScalesを登録
+// converter.jsxにてconverterを登録
+// scales.jsxにてscaleを登録
 
 // 将来やること
 // graphTypeが切り替わるごとにdatasetをリセット
@@ -24,7 +24,8 @@ import GraphTypeSelector from "../Parts/GraphTypeSelector";
 const GraphForm = (props) => {
     const [index, setIndex] = useState(0);
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const datasets = useSelector(state => state.graphData.datasets);
+    const graphData = useSelector(state => state.graphData);
+    const datasets = graphData.datasets;
     const [graphType, setGraphType] = props.graphTypeState;
 
     const pushSubmitButton = (event) => {
@@ -39,7 +40,7 @@ const GraphForm = (props) => {
 
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <GraphTypeSelector graphTypeState={[graphType, setGraphType]} label="グラフの種類" options={{values:["line","bar","pie","doughnut","polarArea","rader","scatter","bubble"],displays:["line","bar","pie","doughnut","polarArea","rader","scatter","bubble"]}}/>
+                    <GraphTypeSelector index={index} graphTypeState={[graphType, setGraphType]} label="グラフの種類" options={{values:["line","bar","scatter","bubble","pie","doughnut","polarArea","rader"],displays:["line","bar","scatter","bubble","pie","doughnut","polarArea","rader"]}}/>
                 </Grid>   
                 <Grid item xs={12}>
                     <GraphSwitch states={[index,setIndex]} label="グラフ" options={{values:arange(0,datasets.length,1),displays:arange(1,datasets.length + 1,1)}}/>
@@ -48,12 +49,12 @@ const GraphForm = (props) => {
                     <DeleteButton label="グラフを削除" index={index} setIndex={setIndex}/>                    
                 </Grid>
                 <Grid item xs={6}>
-                    <AddButton label="グラフを追加" index={index} setIndex={setIndex} datasetsSize={datasets.length}/>
+                    <AddButton label="グラフを追加" graphType={graphType} index={index} setIndex={setIndex} datasetsSize={datasets.length}/>
                 </Grid>
                 <Grid item xs={12}/>
             </Grid>
             {
-                renderGraphForm(graphType,index,datasets) 
+                renderGraphForm(graphType,index,graphData) 
             }
         
             <form onSubmit={pushSubmitButton}>
@@ -63,12 +64,18 @@ const GraphForm = (props) => {
     )
 }
 
-function renderGraphForm(graphType,index,datasets) {
+function renderGraphForm(graphType,index,graphData) {
+    const datasets = graphData.datasets;
+    if(!datasets[index]) {
+        return <></>;
+    }
     switch(graphType) {
         case "line":
-            return <LineGraphForm index={index} datasets={datasets}/>     
+            return <LineGraphForm index={index} graphData={graphData}/>     
+        case "bar":
+            return  <BarGraphForm index={index} graphData={graphData}/>     
         default:
-            return <></>        
+            return <></>
     }
 }
 

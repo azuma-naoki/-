@@ -7,8 +7,8 @@ const graphData = createSlice({
     initialState: {
         grid:false,    
         datasets:[{
-            type:"",
-            ...initialStates.line,
+            type:"line",
+            // ...initialStates.line,
         }]
     },    
     reducers: {
@@ -36,8 +36,15 @@ const graphData = createSlice({
                 return;
             }
             const newState = produce(state, draft => {                             
-                draft.datasets.push(initialStates.line);                
+                draft.datasets.push(payload.initialState);                
             });
+            return newState;
+        },
+        resetState(state, {payload}) {
+            console.log("a");
+            const newState = {
+                datasets:[payload.initialState]}
+            ;
             return newState;
         }
     }
@@ -51,7 +58,7 @@ function createArray(num,init) {
     return result;
 }
 
-const {write,deleteDataset,addDataset} = graphData.actions;
+const {write,deleteDataset,addDataset,resetState} = graphData.actions;
 
-export {write,deleteDataset,addDataset}
+export {write,deleteDataset,addDataset,resetState}
 export default graphData.reducer

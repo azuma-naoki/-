@@ -1,0 +1,10 @@
+// graphForm作成のフロー
+// XGraphFromコンポーネントを作成
+// renderGraphFormにXGraphFormコンポーネントを登録
+// preview.jsxにてconvertXDataset,xScalesを作成
+// switchGraphConverterにてconvertXDatasetを登録
+// switchScalesにてxScalesを登録
+
+// 将来やること
+//dataset or datasetsにtypeを追加
+// graphTypeが切り替わるごとにdatasetをリセット

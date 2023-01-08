@@ -7,7 +7,8 @@ import {Grid, Typography} from "@mui/material";
 
 const LineGraphForm = (props) => {
     const index = props.index;
-    const datasets = props.datasets;
+    const graphData = props.graphData;
+    const datasets = graphData.datasets;
     return (        
         <>   
             <Grid container spacing={4}>   
@@ -27,7 +28,7 @@ const LineGraphForm = (props) => {
                     <SingleSelect label="マーカーのスタイル" val={"pointStyle"} value={datasets[index].pointStyle} index={index} options={{values:["circle","cross","crossRot","rect","star"],displays:["circle","cross","crossRot","rect","star"]}}/>
                 </Grid>   
                 <Grid item xs={6}>
-                    <SingleSelect label="マーカーの大きさ" val={"pointRadius"} value={datasets[index].pointRadius} index={index} options={{values:[0.1,4,8,12],displays:["なし","小","中","大"]}}/>
+                    <SingleSelect label="マーカーの大きさ" val={"pointRadius"} value={datasets[index].pointRadius} index={index} options={{values:["0","4","8","12"],displays:["なし","小","中","大"]}}/>
                 </Grid>   
                 <Grid item xs={12} >
                     <TextBox label="タイトル" val={"title"} index={-1}/>
@@ -42,7 +43,7 @@ const LineGraphForm = (props) => {
                     <TextBox label="yLabel" val={"yLabel"} index={-1}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <SingleCheckbox label="Gridを表示" val={"grid"} index={-1}/>
+                    <SingleCheckbox value={graphData.grid} label="Gridを表示" val={"grid"} index={-1}/>
                 </Grid>         
                 <Grid item xs={12}/>       
             </Grid>                

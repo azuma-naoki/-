@@ -20,7 +20,7 @@ const SingleCheckbox = (props) => {
     }
     return (
         <>
-            <FormControlLabel control={<Checkbox sx={{...sx}}onChange={onChange}/>} label={props.label}/>        
+            <FormControlLabel control={<Checkbox value={props.value} sx={{...sx}} onChange={onChange}/>} label={props.label}/>        
         </>
     )
 }

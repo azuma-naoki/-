@@ -3,41 +3,10 @@ import { useSelector } from "react-redux";
 import { Chart} from "react-chartjs-2";
 import {Typography,Box} from "@mui/material";
 import backgroundImage from "../../../images/background.png";
+import {scales} from "./scales";
+import {converter} from "./converter";
 
 Chartjs.register(...registerables);
-
-const convertLineStyle = (linestyle) => {
-    switch(linestyle) {
-        case "solid":
-            return [1,0];
-        case "dashed":
-            return [8,2];
-        case "dotted":
-            return [1,5];    
-        case "dashdot":
-            return [15, 3, 3, 3]
-        default:
-            return [1,0];
-    }
-}
-
-// charts.js形式に変換
-const convertLineDataset = (dataset) => {
-    const pushProperty = (obj, property, value) => {
-        if(!value) return;
-        obj[property] = value;        
-    }
-    const chartjsDataset = {
-    };
-    pushProperty(chartjsDataset,"type", "line");
-    pushProperty(chartjsDataset,"data",  dataset.ydata);
-    pushProperty(chartjsDataset,"label", dataset.legend);
-    pushProperty(chartjsDataset,"borderColor", dataset.color);
-    pushProperty(chartjsDataset,"borderDash", convertLineStyle(dataset.linestyle));
-    pushProperty(chartjsDataset,"pointStyle", dataset.pointStyle);
-    pushProperty(chartjsDataset,"pointRadius", dataset.pointRadius);
-    return chartjsDataset;
-}
 
 const Preview = (props) => {
     const graphType = props.graphType;
@@ -45,49 +14,10 @@ const Preview = (props) => {
     const graph = {
         labels:graphData.xdata, //xdata
         datasets: graphData.datasets.map((dataset) => {
-            return switchGraphConverter(graphType,dataset);
+            // return switchGraphConverter(graphType,dataset);
+            return converter(dataset,graphType);
         })
     };
-    const lineScales = {
-        scales: {            
-            x: {
-                title:{
-                    display: true,
-                    text: graphData.xLabel,
-                },
-                grid:{
-                    display:graphData.grid
-                }
-            },
-            y: {
-                title:{
-                    display: true,
-                    text: graphData.yLabel,
-                },
-                grid:{
-                    display:graphData.grid
-                }
-            },
-        },
-    };
-    function switchGraphConverter(graphType,dataset) {
-        switch(graphType) {
-            case "line":
-                return convertLineDataset(dataset);
-            default:
-                return convertLineDataset(dataset);
-        }
-    }
-
-    const switchScales = (graphType) => {
-        switch(graphType) {
-            case "line":
-                return lineScales;
-            default:
-                return lineScales;
-        }
-    }
-
     const chartOptions = {
         maintainAspectRatio:false,
         responsive:true,
@@ -101,8 +31,9 @@ const Preview = (props) => {
             },
         }, 
     }
-    
-    return (
+    console.log(graphType)
+    console.log(scales(graphData)[graphType]);
+    return (        
         <Box className="display" sx={{height:"100%",position:"relative",width:"100%"}}>
             <Box sx={{backgroundColor:"#ffffff",position:"sticky",top:"40px",margin:0,padding:"20px" ,borderRight:"1px dashed black", borderBottom:"3px solid #eeeeee", borderTop:"3px solid #eeeeee"}}>
                 <Typography variant="h7" sx={{background:"#eeffff", color:"#e91e63"}}>preview</Typography>             
@@ -111,8 +42,8 @@ const Preview = (props) => {
                         width={props.width}
                         height={props.height}
                         data={graph}
-                        options={{                      
-                            ...switchScales(graphType),                                                       
+                        options={{                       
+                            scales:scales(graphData)[graphType],
                             ...chartOptions,
                         }}
                         id="chart-key"                
