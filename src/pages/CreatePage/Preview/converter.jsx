@@ -49,15 +49,14 @@ export const converter = (graphData,dataset, graphType) => {
             pushProperty(chartjsDataset,"type", "polarArea");            
             pushProperty(chartjsDataset,"data", dataset.data);                        
         },       
+        radar:(dataset) => {
+            pushProperty(chartjsDataset,"type", "radar");            
+            pushProperty(chartjsDataset,"data", dataset.data);  
+            pushProperty(chartjsDataset,"backgroundColor", dataset.color);
+        }
     }
     
-    if(converters[graphType]) {
-        converters[graphType](dataset);
-    } else {
-        converters["line"](dataset);
-        console.log(`${graphType}のデータセットコンバーターが存在しませんのでlineで代用します`);
-    }
-    
+    converters[graphType](dataset);    
     return chartjsDataset;
 }
 

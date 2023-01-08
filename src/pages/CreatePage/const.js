@@ -29,6 +29,9 @@ export const initialStates = {
     },
     polarArea: {
         type:"polarArea"
+    },
+    radar: {
+        type:"radar"
     }
 
 }

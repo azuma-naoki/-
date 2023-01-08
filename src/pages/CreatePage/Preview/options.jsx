@@ -26,6 +26,11 @@ export const options = (graphData) => {
         },
         polarArea: {
             scales:scales(graphData)["polarArea"]   
+        },
+        radar: {
+            scales:scales(graphData)["radar"]   
         }
+
+        
     }
 }

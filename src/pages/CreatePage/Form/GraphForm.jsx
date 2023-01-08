@@ -15,7 +15,7 @@ import BubbleGraphForm from "../Form/BubbleGraphForm";
 import PieGraphForm from "../Form/PieGraphForm";
 import DoughnutGraphForm from "../Form/DoughnutGraphForm";
 import PolarAreaGraphForm from "../Form/PolarAreaGraphForm";
-
+import RadarGraphForm from "../Form/RadarGraphForm";
 
 // graphForm作成のフロー
 // XGraphFromコンポーネントを作成
@@ -45,7 +45,7 @@ const GraphForm = (props) => {
 
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <GraphTypeSelector index={index} graphTypeState={[graphType, setGraphType]} label="グラフの種類" options={{values:["line","bar","scatter","bubble","pie","doughnut","polarArea","rader"],displays:["line","bar","scatter","bubble","pie","doughnut","polarArea","rader"]}}/>
+                    <GraphTypeSelector index={index} graphTypeState={[graphType, setGraphType]} label="グラフの種類" options={{values:["line","bar","scatter","bubble","pie","doughnut","polarArea","radar"],displays:["line","bar","scatter","bubble","pie","doughnut","polarArea","radar"]}}/>
                 </Grid>   
                 <Grid item xs={12}>
                     <GraphSwitch states={[index,setIndex]} label="グラフ" options={{values:arange(0,datasets.length,1),displays:arange(1,datasets.length + 1,1)}}/>
@@ -88,9 +88,9 @@ function renderGraphForm(graphType,index,graphData) {
         case "doughnut":
             return <DoughnutGraphForm index={index} graphData={graphData}/>
         case "polarArea":
-            return <PolarAreaGraphForm index={index} graphData={graphData}/>
-        // case "bubble":
-        //     return <BubbleGraphForm index={index} graphData={graphData}/>
+            return <PolarAreaGraphForm index={index} graphData={graphData}/>    
+        case "radar":
+            return <RadarGraphForm index={index} graphData={graphData}/>
         default:
             return <></>
     }

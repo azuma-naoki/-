@@ -88,5 +88,7 @@ export const scales = (graphData) => {
         },
         polarArea: {
         },
+        radar: {
+        },
     }
 }

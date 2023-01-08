@@ -18,11 +18,11 @@ const Preview = (props) => {
             case "pie": 
             case "doughnut":
             case "polarArea":
+            case "radar":
                 return graphData.labels;
             case "scatter":
             case "bubble":
-                return;
-            case "rader":
+                    return;
                 console.log("検討してください");
         }
     }
