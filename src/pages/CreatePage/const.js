@@ -33,5 +33,4 @@ export const initialStates = {
     radar: {
         type:"radar"
     }
-
 }

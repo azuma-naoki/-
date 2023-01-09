@@ -1,8 +1,14 @@
-body {
-    background-color: #D3E9F5;
-    background-image: url(../images/sen-simple53.png);
-    /* opacity: 0.5; */
+body {    
+    background: rgb(171,212,240);
+    /* background: linear-gradient(90deg, rgba(171,212,240,1) 0%, rgba(183,218,243,1) 100%); */
+   
+    background-image: url(../images/background.png);
+    /* background-image: url(../images/back-ground-06.jpg); */
+    /* background-size: cover; */   
+    background-size: contain;
+    background-size: auto;
     background-position: center top;
+
 }
 
 .display {
@@ -10,4 +16,12 @@ body {
     background-color:rgba(255,255,255,0.5);
     background-blend-mode:soft-light;
     /* mix-blend-mode: screen; */
+}
+
+.front {
+    margin:0 auto;
+    width:150%;
+    display:block;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(183,218,243,1) 100%);;
+    position: static;
 }
