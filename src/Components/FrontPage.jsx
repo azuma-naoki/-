@@ -18,7 +18,7 @@ const FrontPage = () => {
             <div>
                 <Link to="/print">
                     <Button  variant={"contained"} size={"large"} sx={buttonStyle}>
-                        Get Start
+                        Get Started
                     </Button>
                 </Link>
 

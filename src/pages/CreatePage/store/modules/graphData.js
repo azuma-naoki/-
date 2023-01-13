@@ -44,8 +44,7 @@ const graphData = createSlice({
             const newState = {
                 ...initialStates.common,  
                 datasets:[payload.initialState]
-            }
-            ;
+            };            
             return newState;
         }
     }
