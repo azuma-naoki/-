@@ -8,16 +8,23 @@ import {Link} from "react-router-dom";
 const FrontPage = () => {
     const buttonStyle = {
         position:"absolute",        
-        top:"20%",
-        right:"25%", 
+        top:"15%",
+        right:"22%", 
         // minWidth: "",
+        // background:"rgba(255,0,0,0.7)",        
+        padding:"50px",
+        background: "radial-gradient(rgba(200,200,255,1), rgba(255,255,255,0.2))",
+        // opacity:0.7,
+        borderRadius:999,
+        color:"rgba(0,0,255,0.6)",
+        border:"1px solid rgba(0,0,255,0.2)",
     }
     return (
         <div>            
             <img className="front" src={frontImage}></img>              
             <div>
                 <Link to="/print">
-                    <Button  variant={"contained"} size={"large"} sx={buttonStyle}>
+                    <Button  variant={"text"} size={"large"} sx={buttonStyle}>
                         Get Started
                     </Button>
                 </Link>

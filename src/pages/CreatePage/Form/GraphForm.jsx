@@ -56,7 +56,7 @@ const GraphForm = (props) => {
                 <Grid item xs={6}>
                     <AddButton label="グラフを追加" graphType={graphType} index={index} setIndex={setIndex} datasetsSize={datasets.length}/>
                 </Grid>
-                <Grid item xs={12}/>
+                <Grid item xs={12} sx={{borderBottom:"1px dashed black", marginBottom:"30px",marginTop:"20px"}}/>
             </Grid>
             {
                 renderGraphForm(graphType,index,graphData) 
