@@ -12,22 +12,12 @@ const GraphSwitch = (props) => {
     setIndex(event.target.value);
   };
   
-  return (
-    // <Box sx={{ minWidth: 120 }}>
-    //   <FormControl fullWidth>
-    //     <InputLabel>{props.label}</InputLabel>
-    //     <Select value={index} label={props.label} onChange={onChange}>
-    //       {props.options.values.map((value,i) => {
-    //         return <MenuItem value={value} key={value}>{props.options.displays[i]}</MenuItem>
-    //       })}
-    //     </Select>
-    //   </FormControl>
-    // </Box>
+  return (  
     <FormControl>
-      <FormLabel id="demo-row-radio-buttons-group-label">グラフ</FormLabel>
-      <RadioGroup row name="row-radio-buttons-group" value={index} label={props.label} onChange={onChange}>  
+      <FormLabel>{props.label}</FormLabel>
+      <RadioGroup row value={index} onChange={onChange}>  
         {props.options.values.map((value,i) => {
-          return <FormControlLabel value={value} control={<Radio />} label={i+1} />        
+          return <FormControlLabel key={value} value={value} control={<Radio />} label={i+1} />        
         })}
       </RadioGroup>
     </FormControl>

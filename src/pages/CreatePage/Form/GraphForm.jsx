@@ -1,6 +1,6 @@
 import LineGraphForm from "./LineGraphForm";
 import BarGraphForm from "./BarGraphForm";
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import SubmitButton from "../Parts/SubmitButton";
 import Modal from "../Modal";
 import {Grid} from "@mui/material";
@@ -32,6 +32,11 @@ const GraphForm = (props) => {
     const graphData = useSelector(state => state.graphData);
     const datasets = graphData.datasets;
     const [graphType, setGraphType] = props.graphTypeState;
+    useEffect(() => {
+        if(datasets) {
+            setGraphType(datasets[0].type)
+        }
+    },[])
 
     const pushSubmitButton = (event) => {
         event.preventDefault();
@@ -45,7 +50,7 @@ const GraphForm = (props) => {
 
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <GraphTypeSelector index={index} graphTypeState={[graphType, setGraphType]} label="グラフの種類" options={{values:["line","bar","scatter","bubble","pie","doughnut","polarArea","radar"],displays:["line","bar","scatter","bubble","pie","doughnut","polarArea","radar"]}}/>
+                    <GraphTypeSelector index={index} graphTypeState={[graphType, setGraphType]} label="グラフの種類" options={{values:["line","bar","scatter","bubble","pie","doughnut","polarArea","radar"],displays:["折れ線グラフ","棒グラフ","散布図","バブルチャート","円グラフ","ドーナツグラフ","鶏頭図","レーダーチャート"]}}/>
                 </Grid>   
                 <Grid item xs={12}>
                     <GraphSwitch states={[index,setIndex]} label="グラフ" options={{values:arange(0,datasets.length,1),displays:arange(1,datasets.length + 1,1)}}/>

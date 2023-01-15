@@ -59,8 +59,7 @@ const Preview = (props) => {
     );
     
 
-    function GraphDisplayer() {
-        console.log(graphType);
+    function GraphDisplayer() {        
         switch(graphType) {
             case "pie": 
             return(
