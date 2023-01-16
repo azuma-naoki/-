@@ -2,25 +2,31 @@ import * as React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { getGraph } from "../api";
+import { useSelector } from "react-redux";
 
 export default function RenderGraph(props) {
   const [graph, setGraph] = useState(null)
+  const graphData = useSelector(state => state.graphData);
 
+  // useEffect(()=>{
+  //   getGraph(props.x, props.y).then((res)=>{
+  //       setGraph(res)
+  //   });
+  // }, [])
   useEffect(()=>{
-    getGraph(props.x, props.y).then((res)=>{
+    getGraph(graphData).then((res)=>{
         setGraph(res)
     });
   }, [])
 
   return (
-    <div>
+    <>
+      <p>RenderGraph</p>
       {graph == null ? (
         <p>loading</p>
       ) : (
-        <div>
-            <img src={`data:image/png;base64,${graph.value}`}  width="400" />
-        </div>
+        <img src={`data:image/png;base64,${graph.value}`}  width="400" />
       )}
-    </div>
+    </>
   );
 }

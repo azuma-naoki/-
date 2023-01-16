@@ -1,6 +1,7 @@
 import React from 'react'
 import {Box,Button,Slide,Dialog, DialogActions, DialogTitle,DialogContent} from "@mui/material";
 import samplePng from "../../images/line.png";
+import RenderGraph from '../RenderGraph';
 
 const Modal = (props) => {
     const [isOpen, setIsOpen] = props.modalState;
@@ -17,7 +18,8 @@ const Modal = (props) => {
                     <Slide direction="down" in={isOpen} timeout={{appear:2000,enter:200,exit:400}}>       
                         <Box>
                             <a download>
-                                <img src={samplePng}/>                  
+                                {/* <img src={samplePng}/> */}
+                                <RenderGraph />
                             </a>
                         </Box>                                 
                     </Slide>
