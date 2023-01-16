@@ -3,13 +3,14 @@ import Preview from "./Preview/Preview";
 import { Provider } from "react-redux";
 import store from "./store";
 import {Container,Box,Grid,Typography,Fade} from "@mui/material";
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 const CreatePage = () => {
     const [graphType, setGraphType] = useState("line");
+    
     return (
-        <>
+        <>        
             <Header/>
             <Provider store = {store}>               
                 <Fade in={true} timeout={{appear:1000,enter:1500,exit:1000}}>
