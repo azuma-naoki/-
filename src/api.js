@@ -5,8 +5,8 @@
 // }
 
 async function request(path, options = {}) {
-  const url = `https://pri-server.vercel.app/${path}`;
-  // const url = `http://localhost:5000/${path}`;
+  // const url = `https://pri-server.vercel.app/${path}`;
+  const url = `http://localhost:5000/${path}`;
   const response = await fetch(url, options);
   return response.json();
 }
