@@ -50,14 +50,6 @@ const graphData = createSlice({
     }
 })
 
-function createArray(num,init) {
-    const result = [];
-    for(let i = 0;i < num; i++) {
-        result.push(init);
-    }
-    return result;
-}
-
 const {write,deleteDataset,addDataset,resetState} = graphData.actions;
 
 export {write,deleteDataset,addDataset,resetState}

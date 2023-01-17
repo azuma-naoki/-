@@ -8,11 +8,6 @@ export default function RenderGraph(props) {
   const [graph, setGraph] = useState(null)
   const graphData = useSelector(state => state.graphData);
 
-  // useEffect(()=>{
-  //   getGraph(props.x, props.y).then((res)=>{
-  //       setGraph(res)
-  //   });
-  // }, [])
   useEffect(()=>{
     getGraph(graphData).then((res)=>{
         setGraph(res)

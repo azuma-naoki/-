@@ -17,6 +17,7 @@ const FrontPage = () => {
         border:"1px solid rgba(0,0,255,0.2)",
         width:"150px",
         height:"150px",
+        textTransform: 'none',
     }
     return (
         <div>            

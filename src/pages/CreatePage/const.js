@@ -19,18 +19,45 @@ export const initialStates = {
         type:"scatter",
     },
     bubble: {
-        type:"bubble",
+        type:"bubble",    
     },
     pie: {
         type:"pie",
+        colors:[
+            "#FF0000",
+            "#FFA500",            
+            "#FFFF00",
+            "#008000",
+            "#00FFFF",
+            "#0000FF",
+            "#800080"
+        ]
     },
     doughnut: {
         type:"doughnut",
+        colors:[
+            "#FF0000",
+            "#FFA500",
+            "#FFFF00",
+            "#008000",
+            "#00FFFF",
+            "#0000FF",
+            "#800080"
+        ]
     },
     polarArea: {
-        type:"polarArea"
+        type:"polarArea",
+        colors:[
+            "#FF0000",
+            "#FFA500",
+            "#FFFF00",
+            "#008000",
+            "#00FFFF",
+            "#0000FF",
+            "#800080"
+        ]
     },
     radar: {
-        type:"radar"
+        type:"radar",        
     }
 }

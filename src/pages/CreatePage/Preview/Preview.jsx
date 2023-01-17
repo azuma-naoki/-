@@ -22,8 +22,7 @@ const Preview = (props) => {
                 return graphData.labels;
             case "scatter":
             case "bubble":
-                    return;
-                console.log("検討してください");
+                return;                
         }
     }
     
@@ -33,6 +32,7 @@ const Preview = (props) => {
             return converter(graphData,dataset,graphType);
         })
     };
+    
     const chartOptions = {
         maintainAspectRatio:false,
         responsive:true,

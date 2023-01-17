@@ -54,13 +54,13 @@ const GraphForm = (props) => {
                 </Grid>   
                 <Grid item xs={12}>
                     <GraphSwitch states={[index,setIndex]} label="グラフ" options={{values:arange(0,datasets.length,1),displays:arange(1,datasets.length + 1,1)}}/>
-                </Grid>     
+                </Grid>                                 
                 <Grid item xs={6}>
-                    <DeleteButton label="グラフを削除" index={index} setIndex={setIndex}/>                    
+                    <DeleteButton label="グラフを削除" datasets={datasets} index={index} setIndex={setIndex} datasetsSize={datasets.length}/>                    
                 </Grid>
                 <Grid item xs={6}>
                     <AddButton label="グラフを追加" graphType={graphType} index={index} setIndex={setIndex} datasetsSize={datasets.length}/>
-                </Grid>
+                </Grid>                    
                 <Grid item xs={12} sx={{borderBottom:"1px dashed black", marginBottom:"30px",marginTop:"20px"}}/>
             </Grid>
             {

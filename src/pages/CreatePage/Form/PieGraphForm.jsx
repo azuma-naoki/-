@@ -24,7 +24,7 @@ const PieGraphForm = (props) => {
                         graphData["labels"].map((label,i) => {
                             return  <ColorPicker label={graphData["labels"][i]} val={"color"} value={datasets[index].color} index={index}/>
                         })                       
-                    }              
+                    }             
                 </Grid>                    */}
                 <Grid item xs={12} >
                     <TextBox label="タイトル" val={"title"} index={-1}/>

@@ -39,15 +39,19 @@ export const converter = (graphData,dataset, graphType) => {
         },       
         pie: (dataset) => {
             pushProperty(chartjsDataset,"type", "pie");            
-            pushProperty(chartjsDataset,"data", dataset.data);                        
+            pushProperty(chartjsDataset,"data", dataset.data);         
+            pushProperty(chartjsDataset,"backgroundColor",dataset.colors)               
+            console.log(dataset.colors)
         },   
         doughnut: (dataset) => {
             pushProperty(chartjsDataset,"type", "doughnut");            
-            pushProperty(chartjsDataset,"data", dataset.data);                        
+            pushProperty(chartjsDataset,"data", dataset.data);                      
+            pushProperty(chartjsDataset,"backgroundColor",dataset.colors)                 
         },      
         polarArea: (dataset) => {
             pushProperty(chartjsDataset,"type", "polarArea");            
-            pushProperty(chartjsDataset,"data", dataset.data);                        
+            pushProperty(chartjsDataset,"data", dataset.data);                       
+            pushProperty(chartjsDataset,"backgroundColor",dataset.colors)                
         },       
         radar:(dataset) => {
             pushProperty(chartjsDataset,"type", "radar");            
