@@ -37,16 +37,111 @@ const GraphForm = (props) => {
             setGraphType(datasets[0].type)
         }
     },[])
+    const isNumberString = n => typeof n === "string" && n !== "" &&  !isNaN( n );
+    const isNumberArray = (array) => {
+        for(const data of array) {
+            if(!isNumberString(data)) {
+                return false;
+            }            
+        }
+        return true;
+    }
 
     const pushSubmitButton = (event) => {
-        event.preventDefault();        
+        event.preventDefault();    
+        switch(graphType) {
+            case "line":
+                console.log(graphData)                
+                for(let dataset of datasets) {
+                    if(dataset["ydata"].length !== graphData["xdata"].length) {  //要素の長さを見る
+                        return;
+                    }
+                    if(!isNumberArray(dataset["ydata"])) {
+                        return;
+                    } 
+                }            
+
+                console.log("できた");
+                break
+            case "bar":
+                for(let dataset of datasets) {
+                    if(dataset["ydata"].length !== graphData["xdata"].length) {  //要素の長さを見る
+                        return;
+                    }
+                    if(!isNumberArray(dataset["ydata"])) {
+                        return;
+                    } 
+                }
+                break
+            case "scatter":
+                for(let dataset of datasets) {
+                    if(!dataset["xdata"].length === dataset["ydata"].length) {
+                        return;
+                    }
+                    if(!isNumberArray(dataset["xdata"]) || !isNumberArray(dataset["ydata"])) {
+                        return;
+                    }
+                }                
+                break
+            case "bubble":
+                for(let dataset of datasets) {
+                    if(!(dataset["xdata"].length === dataset["ydata"].length && dataset["rdata"].length === dataset["xdata"])) {
+                        return;
+                    }
+                    if(!isNumberArray(dataset["xdata"]) || !isNumberArray(dataset["ydata"]) || !isNumberArray(dataset["rdata"])) {
+                        return;
+                    }
+                }        
+                break
+            case "pie":
+                for(let dataset of datasets) {
+                    if(dataset["data"].length !== graphData["labels"].length) {  //要素の長さを見る
+                        return;
+                    }
+                    if(!isNumberArray(dataset["data"])) {
+                        return;
+                    } 
+                }
+                break
+            case "doughnut":                
+                for(let dataset of datasets) {
+                    if(dataset["data"].length !== graphData["labels"].length) {  //要素の長さを見る
+                        return;
+                    }
+                    if(!isNumberArray(dataset["data"])) {
+                        return;
+                    } 
+                }
+                break        
+            case "polarArea":            
+                for(let dataset of datasets) {
+                    if(dataset["data"].length !== graphData["labels"].length) {  //要素の長さを見る
+                        return;
+                    }
+                    if(!isNumberArray(dataset["data"])) {
+                        return;
+                    } 
+                }
+                break     
+            case "radar":                
+                for(let dataset of datasets) {
+                    if(dataset["data"].length !== graphData["labels"].length) {  //要素の長さを見る
+                        return;
+                    }
+                    if(!isNumberArray(dataset["data"])) {
+                        return;
+                    } 
+                }
+                break
+            default:
+                break   
+        }
         setIsOpenModal(prev => !prev);
     }    
     
     return (        
-        <>        
-            <Modal modalState={[isOpenModal,setIsOpenModal]}/>
-
+        <>                    
+            <Modal modalState={[isOpenModal,setIsOpenModal]}/>            
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <GraphTypeSelector index={index} graphTypeState={[graphType, setGraphType]} label="グラフの種類" options={{values:["line","bar","scatter","bubble","pie","doughnut","polarArea","radar"],displays:["折れ線グラフ","棒グラフ","散布図","バブルチャート","円グラフ","ドーナツグラフ","鶏頭図","レーダーチャート"]}}/>
@@ -67,12 +162,12 @@ const GraphForm = (props) => {
             }
             
             <Grid container>
-                <Grid xs={6}>
+                <Grid xs={6} item>
                     <form onSubmit={pushSubmitButton}>
                         <SubmitButton label="グラフを出力" sx={{padding:"90px"}}/>      
                     </form>
                 </Grid>
-                <Grid xs={6}>
+                <Grid xs={6} item>
                     <form>
                         <SubmitButton disabled={true} label="コードを出力" sx={{padding:"90px"}}/>      
                     </form>

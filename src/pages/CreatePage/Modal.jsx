@@ -17,9 +17,12 @@ const Modal = (props) => {
                 <DialogContent >
                     <Slide direction="down" in={isOpen} timeout={{appear:2000,enter:200,exit:400}}>       
                         <Box sx={{width:500,height:500}}>
-                            <a download>
-                                {/* <img src={samplePng}/> */}
-                                <RenderGraph />
+                            <a download>                                
+                                {
+                                    isOpen ?
+                                    <RenderGraph />
+                                    :<></>
+                                }                                
                             </a>
                         </Box>                                 
                     </Slide>

@@ -3,6 +3,7 @@ export const maxIndex = 10;
 export const initialStates = {
     common: {
         grid:false,
+        title:"",
     },
     line: {
         type:"line",
