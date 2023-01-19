@@ -39,8 +39,7 @@ const GraphForm = (props) => {
     },[])
 
     const pushSubmitButton = (event) => {
-        event.preventDefault();
-        // 将来的にここを変える;修正
+        event.preventDefault();        
         setIsOpenModal(prev => !prev);
     }    
     
@@ -66,10 +65,21 @@ const GraphForm = (props) => {
             {
                 renderGraphForm(graphType,index,graphData) 
             }
-        
-            <form onSubmit={pushSubmitButton}>
-                <SubmitButton label="グラフを作成" sx={{padding:"90px"}}/>      
-            </form>
+            
+            <Grid container>
+                <Grid xs={6}>
+                    <form onSubmit={pushSubmitButton}>
+                        <SubmitButton label="グラフを出力" sx={{padding:"90px"}}/>      
+                    </form>
+                </Grid>
+                <Grid xs={6}>
+                    <form>
+                        <SubmitButton disabled={true} label="コードを出力" sx={{padding:"90px"}}/>      
+                    </form>
+                </Grid>  
+            </Grid>
+            
+            
         </>
     )
 }

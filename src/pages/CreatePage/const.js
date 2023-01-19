@@ -11,17 +11,28 @@ export const initialStates = {
         legend:"",
         pointStyle:"circle",
         pointRadius:"4",
+        ydata:[],
     },
     bar: {
         type:"bar",
+        legend:"",
+        ydata:[],
     },
     scatter: {
         type:"scatter",
+        legend:"",
+        xdata:[],
+        ydata:[],
     },
     bubble: {
         type:"bubble",    
+        legend:"",
+        xdata:[],
+        ydata:[],
+        rdata:[],
     },
     pie: {
+        data:[],
         type:"pie",
         colors:[
             "#FF0000",
@@ -34,6 +45,7 @@ export const initialStates = {
         ]
     },
     doughnut: {
+        data:[],
         type:"doughnut",
         colors:[
             "#FF0000",
@@ -46,6 +58,7 @@ export const initialStates = {
         ]
     },
     polarArea: {
+        data:[],
         type:"polarArea",
         colors:[
             "#FF0000",
@@ -58,6 +71,7 @@ export const initialStates = {
         ]
     },
     radar: {
+        data:[],
         type:"radar",        
     }
 }
