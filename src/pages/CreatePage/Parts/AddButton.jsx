@@ -16,7 +16,7 @@ const AddButton = (props) => {
         });
     }
     return (    
-        ((graphType === "line" || graphType === "bar" || graphType === "scatter" || graphType === "bubble") && props.datasetsSize < maxIndex) ?
+        ((graphType === "line" || graphType === "bar" || graphType === "scatter" || graphType === "bubble" || graphType === "radar") && props.datasetsSize < maxIndex) ?
         <Button variant="contained" onClick={onClick}>{props.label}</Button>
         :<Button variant="contained" onClick={onClick} disabled>{props.label}</Button>
     )

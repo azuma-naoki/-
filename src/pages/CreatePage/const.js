@@ -15,18 +15,23 @@ export const initialStates = {
     },
     bar: {
         type:"bar",
+        color:"#0084ff",    
         legend:"",
         ydata:[],
     },
     scatter: {
         type:"scatter",
         legend:"",
+        color:"#0084ff",    
         xdata:[],
         ydata:[],
+        pointStyle:"circle",
+        pointRadius:"4"
     },
     bubble: {
         type:"bubble",    
         legend:"",
+        color:"#0084ff",    
         xdata:[],
         ydata:[],
         rdata:[],
@@ -72,6 +77,7 @@ export const initialStates = {
     },
     radar: {
         data:[],
-        type:"radar",        
+        type:"radar",    
+        color:"#0084ff",        
     }
 }
