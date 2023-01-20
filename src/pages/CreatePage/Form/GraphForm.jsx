@@ -49,7 +49,7 @@ const GraphForm = (props) => {
 
     const pushSubmitButton = (event) => {
         event.preventDefault();    
-        switch(graphType) {
+        switch(graphType) {            
             case "line":
                 console.log(graphData)                
                 for(let dataset of datasets) {
@@ -136,6 +136,7 @@ const GraphForm = (props) => {
             default:
                 break   
         }
+        // console.log(xdata);
         setIsOpenModal(prev => !prev);
     }    
     

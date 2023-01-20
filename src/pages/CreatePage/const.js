@@ -4,6 +4,8 @@ export const initialStates = {
     common: {
         grid:false,
         title:"",
+        stacked:false,
+        barh:false,
     },
     line: {
         type:"line",
