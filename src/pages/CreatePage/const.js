@@ -35,6 +35,7 @@ export const initialStates = {
         type:"bubble",    
         legend:"",
         color:"#0084ff",    
+        pointStyle:"circle",
         xdata:[],
         ydata:[],
         rdata:[],
