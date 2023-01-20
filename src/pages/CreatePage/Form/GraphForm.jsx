@@ -37,6 +37,7 @@ const GraphForm = (props) => {
             setGraphType(datasets[0].type)
         }
     },[])
+
     const isNumberString = n => typeof n === "string" && n !== "" &&  !isNaN( n );
     const isNumberArray = (array) => {
         for(const data of array) {
@@ -85,7 +86,7 @@ const GraphForm = (props) => {
                 break
             case "bubble":
                 for(let dataset of datasets) {
-                    if(!(dataset["xdata"].length === dataset["ydata"].length && dataset["rdata"].length === dataset["xdata"])) {
+                    if(!(dataset["xdata"].length === dataset["ydata"].length && dataset["rdata"].length === dataset["xdata"].length)) {
                         return;
                     }
                     if(!isNumberArray(dataset["xdata"]) || !isNumberArray(dataset["ydata"]) || !isNumberArray(dataset["rdata"])) {
