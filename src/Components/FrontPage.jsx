@@ -1,8 +1,6 @@
 import React from 'react'
-import Header from "./Header";
 import frontImage from "../images/front.png";
-import {Button} from "@mui/material";
-import buttonImage from "../images/startButton.png";
+import {Button,Fade,Collapse} from "@mui/material";
 import {Link} from "react-router-dom";
 
 const FrontPage = () => {
@@ -21,15 +19,19 @@ const FrontPage = () => {
     }
     return (
         <div>            
-            <img className="front" src={frontImage}></img>              
-            <div>
-                <Link to="/print">
-                    <Button  variant={"text"} size={"large"} sx={buttonStyle}>
-                        Get Started
-                    </Button>
-                </Link>
+            <Fade in={true} timeout={{appear:1000,enter:500,exit:1200}}>
+                <div>            
+                    <img className="front" src={frontImage}></img>              
+                    <div>
+                        <Link to="/print">
+                            <Button  variant={"text"} size={"large"} sx={buttonStyle}>
+                                Get Started
+                            </Button>
+                        </Link>
 
-            </div>            
+                    </div>         
+                </div>   
+            </Fade>
         </div>
     )
 }

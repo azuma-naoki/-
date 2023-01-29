@@ -2,7 +2,6 @@ import {useDispatch} from "react-redux";
 import {addDataset} from "../store/modules/graphData";
 import {Button} from "@mui/material";
 import {maxIndex,initialStates} from "../const";
-
 const AddButton = (props) => {
     const graphType = props.graphType;
     const dispatch = useDispatch();

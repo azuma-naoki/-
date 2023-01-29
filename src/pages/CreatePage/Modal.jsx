@@ -10,6 +10,7 @@ const Modal = (props) => {
         setIsOpen(false);
     }        
     const errors = new Errors(props.graphData);        
+    
     return (
         <>
             <Dialog onClose={closeModal} open={isOpen}>
@@ -21,21 +22,21 @@ const Modal = (props) => {
                         <Box sx={{width:500,height:500}}>                           
                             <a download>                                                                
                                 {         
-                                    errors.existError() ?                           
+                                    errors.existError() ?                                                            
                                     errors.getError().map((error) => {
                                         return <>
                                             <Typography variant="p" color="error" key={error} sx={{whiteSpace:"pre-wrap"}}>{error}</Typography>
                                             <p></p>
                                         </>;
-                                    }):
+                                    })                               
+                                    :
                                     <>
-                                        <RenderGraph/>
+                                        <RenderGraph/>                                        
                                     </>
                                 }                                
                             </a>
                         </Box>                                 
-                    </Slide>
-                    <Button>Download</Button>                    
+                    </Slide>                                        
                 </DialogContent>
             </Dialog>
         </>

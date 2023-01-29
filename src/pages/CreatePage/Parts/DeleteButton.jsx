@@ -15,7 +15,8 @@ const DeleteButton = (props) => {
     }
     return (    
         props.datasetsSize <= 1 ?
-        <Button variant="contained" disabled onClick={onClick}>{props.label}</Button>
+        <Button variant="contained" disabled onClick={onClick}>
+        {props.label}</Button>
         :<Button variant="contained" onClick={onClick}>{props.label}</Button>
     )
 }

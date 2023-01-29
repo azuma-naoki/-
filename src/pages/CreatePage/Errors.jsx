@@ -1,4 +1,7 @@
-const isNumberString = n => typeof n === "string" && n !== "" &&  !isNaN( n );
+const isNumberString = n => {
+    return typeof n === "number" || typeof n === "string" && n !== "" &&  !isNaN( n );
+}
+
 const isNumberArray = (array) => {
     for(const data of array) {
         if(!isNumberString(data)) {
@@ -14,12 +17,14 @@ class Errors {
         this.graphType = this.datasets[0].type;
         this.errorStrings = [];
         this.setErrorStrings();
+        if(this.existError()) {
+            this.errorStrings.unshift("error:\n");
+        }
     }
     existError() {
         return this.errorStrings.length !== 0;
     }
-    getError() {
-        console.log("error:"+this.errorStrings);
+    getError() {        
         return this.errorStrings;
     }
     setErrorStrings() {
@@ -38,7 +43,7 @@ class Errors {
                         this.errorStrings.push(errorString);
                     }
                     if(!isNumberArray(dataset["ydata"])) {
-                        errorString = `[グラフ${index+1}]: ydataの値は数値データにしてください`;
+                        errorString = `[グラフ${index+1}]: ydataの値は数値データにしてください`;                        
                         this.errorStrings.push(errorString);
                     } 
                     index++;
@@ -61,7 +66,7 @@ class Errors {
                 break;
             case "scatter":                
                 for(let dataset of datasets) {
-                    if(!dataset["xdata"].length === dataset["ydata"].length) {
+                    if(dataset["xdata"].length !== dataset["ydata"].length) {
                         errorString =`[グラフ${index+1}]: xdataとydataの要素数を同じにしてください\n`;
                         errorString += `xdataの要素数:${dataset["xdata"].length}\n `;
                         errorString += `ydataの要素数:${dataset["ydata"].length}\n `;

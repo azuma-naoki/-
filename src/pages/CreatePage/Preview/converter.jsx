@@ -12,6 +12,7 @@ export const converter = (graphData,dataset, graphType) => {
             pushProperty(chartjsDataset,"data",  dataset.ydata);
             pushProperty(chartjsDataset,"label", dataset.legend);
             pushProperty(chartjsDataset,"borderColor", dataset.color);
+            pushProperty(chartjsDataset,"backgroundColor", dataset.color);
             pushProperty(chartjsDataset,"borderDash", convertLineStyle(dataset.linestyle));
             pushProperty(chartjsDataset,"pointStyle", dataset.pointStyle);
             pushProperty(chartjsDataset,"pointRadius", dataset.pointRadius);
@@ -26,6 +27,7 @@ export const converter = (graphData,dataset, graphType) => {
             pushProperty(chartjsDataset,"type", "scatter");
             pushProperty(chartjsDataset,"data",  createScatterData(dataset.xdata,dataset.ydata));
             pushProperty(chartjsDataset,"label", dataset.legend);
+            pushProperty(chartjsDataset,"borderColor", dataset.color);
             pushProperty(chartjsDataset,"backgroundColor", dataset.color);
             pushProperty(chartjsDataset,"pointStyle", dataset.pointStyle);
             pushProperty(chartjsDataset,"pointRadius", dataset.pointRadius);
@@ -34,28 +36,32 @@ export const converter = (graphData,dataset, graphType) => {
             pushProperty(chartjsDataset,"type", "bubble");
             pushProperty(chartjsDataset,"data", createBubbleData(dataset.xdata,dataset.ydata,dataset.rdata));
             pushProperty(chartjsDataset,"label", dataset.legend);
+            pushProperty(chartjsDataset,"borderColor", dataset.color);
             pushProperty(chartjsDataset,"backgroundColor", dataset.color);
             pushProperty(chartjsDataset,"pointStyle", dataset.pointStyle);
         },       
         pie: (dataset) => {
             pushProperty(chartjsDataset,"type", "pie");            
-            pushProperty(chartjsDataset,"data", dataset.data);         
+            pushProperty(chartjsDataset,"data", dataset.data);     
+            pushProperty(chartjsDataset,"borderColor", dataset.color);    
             pushProperty(chartjsDataset,"backgroundColor",dataset.colors)               
-            console.log(dataset.colors)
         },   
         doughnut: (dataset) => {
             pushProperty(chartjsDataset,"type", "doughnut");            
-            pushProperty(chartjsDataset,"data", dataset.data);                      
+            pushProperty(chartjsDataset,"data", dataset.data);     
+            pushProperty(chartjsDataset,"borderColor", dataset.color);                 
             pushProperty(chartjsDataset,"backgroundColor",dataset.colors)                 
         },      
         polarArea: (dataset) => {
             pushProperty(chartjsDataset,"type", "polarArea");            
-            pushProperty(chartjsDataset,"data", dataset.data);                       
+            pushProperty(chartjsDataset,"data", dataset.data);       
+            pushProperty(chartjsDataset,"borderColor", dataset.color);                
             pushProperty(chartjsDataset,"backgroundColor",dataset.colors)                
         },       
         radar:(dataset) => {
             pushProperty(chartjsDataset,"type", "radar");            
             pushProperty(chartjsDataset,"data", dataset.data);  
+            pushProperty(chartjsDataset,"borderColor", dataset.color);
             pushProperty(chartjsDataset,"backgroundColor", dataset.color);
         }
     }

@@ -17,15 +17,7 @@ const PieGraphForm = (props) => {
                 </Grid>
                 <Grid item xs={12}>
                     <FileInput label="data:" val={"data"} index={index} empty={!datasets[index].data.length}/><p></p>
-                </Grid>
-                {/* <Grid item xs={12}>      
-                    {           
-                        (graphData["labels"] && graphData["labels"].length <= 10) &&           
-                        graphData["labels"].map((label,i) => {
-                            return  <ColorPicker label={graphData["labels"][i]} val={"color"} value={datasets[index].color} index={index}/>
-                        })                       
-                    }             
-                </Grid>                    */}
+                </Grid>                
                 <Grid item xs={12} >
                     <TextBox label="タイトル" val={"title"} index={-1}/>
                 </Grid>                                                  
