@@ -8,15 +8,15 @@ import {Grid, Typography} from "@mui/material";
 const LineGraphForm = (props) => {
     const index = props.index;
     const graphData = props.graphData;
-    const datasets = graphData.datasets;
+    const datasets = graphData.datasets;    
     return (        
         <>   
             <Grid container spacing={4}>   
                 <Grid item xs={12} >                        
-                    <FileInput label="xdata:" val={"xdata"} index={-1}/><p></p>
+                    <FileInput label="xdata:" val={"xdata"} index={-1} empty={!graphData.xdata.length}/> <p></p>
                 </Grid>
                 <Grid item xs={12}>
-                    <FileInput label="ydata:" val={"ydata"} index={index}/><p></p>
+                    <FileInput label="ydata:" val={"ydata"} index={index} empty={!datasets[index].ydata.length}/><p></p>
                 </Grid>
                 <Grid item xs={12}>                    
                     <ColorPicker label="線の色 " val={"color"} value={datasets[index].color} index={index}/>

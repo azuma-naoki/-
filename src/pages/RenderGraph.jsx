@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { getGraph } from "../api";
 import { useSelector } from "react-redux";
+import { CircularProgress } from "@mui/material";
 
 export default function RenderGraph(props) {
   const [graph, setGraph] = useState(null)
@@ -17,8 +18,8 @@ export default function RenderGraph(props) {
   return (
     <>
       <p>RenderGraph</p>
-      {graph == null ? (
-        <p>loading</p>
+      {graph == null ? (        
+        <CircularProgress/>
       ) : (
         <img src={`data:image/png;base64,${graph.value}`}  width="400" />
       )}

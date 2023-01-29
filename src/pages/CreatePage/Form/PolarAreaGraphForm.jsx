@@ -13,10 +13,10 @@ const PolarAreaGraphForm = (props) => {
         <>               
             <Grid container spacing={4}>   
                 <Grid item xs={12} >                        
-                    <FileInput label="labels:" val={"labels"} index={-1}/><p></p>
+                    <FileInput label="labels:" val={"labels"} index={-1} empty={!graphData.labels.length}/><p></p>
                 </Grid>
                 <Grid item xs={12}>
-                    <FileInput label="data:" val={"data"} index={index}/><p></p>
+                    <FileInput label="data:" val={"data"} index={index} empty={!datasets[index].data.length}/><p></p>
                 </Grid>
                 {/* <Grid item xs={12}>      
                     {           

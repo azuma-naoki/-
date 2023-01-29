@@ -53,8 +53,7 @@ const Preview = (props) => {
                 <div>
                     {GraphDisplayer()}
                 </div>
-                <p>{JSON.stringify(graphData, null, 2)}</p>
-            </Box>            
+                <p>{JSON.stringify(graphData, null, 2)}</p>            </Box>            
         </Box>
     );
     

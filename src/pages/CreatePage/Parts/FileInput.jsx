@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux";
 import {write} from "../store/modules/graphData";
 const FileInput = (props) => {
     const dispatch = useDispatch();
+    const isNumberString = n => typeof n === "string" && n !== "" &&  !isNaN( n );
     const onChange = (event) => {
         const file = event.target.files;
         const fileReader = new FileReader();
@@ -21,9 +22,16 @@ const FileInput = (props) => {
     return (
         <>
             <Typography variant="caption" component="span" mt={1} gutterBottom>{props.label}</Typography>
-            <Button variant="outlined" component="label">ファイルを選択
-                <input type="file" hidden onChange={onChange} accept=".txt"/>
-            </Button>
+            {   
+                props.empty?
+                <Button variant="outlined" component="label">ファイルを選択
+                    <input type="file" hidden onChange={onChange} accept=".txt"/>
+                </Button>
+                :
+                <Button variant="outlined" component="label" color="success">ファイルを選択
+                    <input type="file" hidden onChange={onChange} accept=".txt"/>
+                </Button>                
+            }
         </>
     )
 }

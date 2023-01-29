@@ -11,19 +11,11 @@ const DoughnutGraphForm = (props) => {
         <>               
             <Grid container spacing={4}>   
                 <Grid item xs={12} >                        
-                    <FileInput label="labels:" val={"labels"} index={-1}/><p></p>
+                    <FileInput label="labels:" val={"labels"} index={-1} empty={!graphData.labels.length}/><p></p>
                 </Grid>
                 <Grid item xs={12}>
-                    <FileInput label="data:" val={"data"} index={index}/><p></p>
-                </Grid>
-                {/* <Grid item xs={12}>      
-                    {           
-                        (graphData["labels"] && graphData["labels"].length <= 10) &&           
-                        graphData["labels"].map((label,i) => {
-                            return  <ColorPicker label={graphData["labels"][i]} val={"color"} value={datasets[index].color} index={index}/>
-                        })                       
-                    }              
-                </Grid>                    */}
+                    <FileInput label="data:" val={"data"} index={index} empty={!datasets[index].data.length}/><p></p>
+                </Grid>                
                 <Grid item xs={12} >
                     <TextBox label="タイトル" val={"title"} index={-1}/>
                 </Grid>                                                  

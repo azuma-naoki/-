@@ -6,6 +6,8 @@ export const initialStates = {
         title:"",
         stacked:false,
         barh:false,
+        xdata:[],
+        labels:[],
     },
     line: {
         type:"line",

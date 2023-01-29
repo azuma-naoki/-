@@ -13,10 +13,10 @@ const ScatterGraphForm = (props) => {
         <>               
             <Grid container spacing={4}>   
                 <Grid item xs={12} >                        
-                    <FileInput label="xdata:" val={"xdata"} index={index}/><p></p>
+                    <FileInput label="xdata:" val={"xdata"} index={index} empty={!datasets[index].xdata.length}/><p></p>
                 </Grid>
                 <Grid item xs={12}>
-                    <FileInput label="ydata:" val={"ydata"} index={index}/><p></p>
+                    <FileInput label="ydata:" val={"ydata"} index={index} empty={!datasets[index].ydata.length}/><p></p>
                 </Grid>
                 <Grid item xs={12}>                    
                     <ColorPicker label="色 " val={"color"} value={datasets[index].color} index={index}/>
