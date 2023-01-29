@@ -47,7 +47,7 @@ const GraphForm = (props) => {
             <Modal graphData={graphData} modalState={[isOpenModal,setIsOpenModal]}/>            
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <GraphTypeSelector index={index} graphTypeState={[graphType, setGraphType]} label="グラフの種類" options={{values:["line","bar","scatter","bubble","pie","doughnut","polarArea","radar"],displays:["折れ線グラフ","棒グラフ","散布図","バブルチャート","円グラフ","ドーナツグラフ","鶏頭図","レーダーチャート"]}}/>
+                    <GraphTypeSelector index={index} setIndex={setIndex} graphTypeState={[graphType, setGraphType]} label="グラフの種類" options={{values:["line","bar","scatter","bubble","pie","doughnut","polarArea","radar"],displays:["折れ線グラフ","棒グラフ","散布図","バブルチャート","円グラフ","ドーナツグラフ","鶏頭図","レーダーチャート"]}}/>
                 </Grid>   
                 <Grid item xs={12}>
                     <GraphSwitch states={[index,setIndex]} label="グラフ" options={{values:arange(0,datasets.length,1),displays:arange(1,datasets.length + 1,1)}}/>

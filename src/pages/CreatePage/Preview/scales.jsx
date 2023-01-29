@@ -32,6 +32,7 @@ export const scales = (graphData) => {
                 stacked: graphData.stacked  // 積み上げの指定
             },
             y: {
+                reverse:graphData.barh ? true :false,
                 title:{
                     display: true,
                     text: graphData.yLabel,

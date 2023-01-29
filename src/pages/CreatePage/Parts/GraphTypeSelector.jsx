@@ -17,6 +17,7 @@ const GraphTypeSelector = (props) => {
           initialState:initialStates[event.target.value],
         });
         dispatch(action);
+        props.setIndex(0);
     };
 
     return (

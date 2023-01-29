@@ -49,11 +49,12 @@ const Preview = (props) => {
     return (        
         <Box className="display" sx={{height:"100%",position:"relative",width:"100%"}}>
             <Box sx={{backgroundColor:"#ffffff",position:"sticky",top:"40px",margin:0,padding:"20px" ,borderRight:"1px dashed black", borderBottom:"3px solid #eeeeee", borderTop:"3px solid #eeeeee"}}>
-                <Typography variant="h7" sx={{background:"#eeffff", color:"#e91e63"}}>preview</Typography>             
+                <Typography variant="h7" sx={{ color:"#e91e63"}}>preview</Typography>             
                 <div>
                     {GraphDisplayer()}
                 </div>
-                <p>{JSON.stringify(graphData, null, 2)}</p>            </Box>            
+                {/* <p>{JSON.stringify(graphData, null, 2)}</p>             */}
+            </Box>            
         </Box>
     );
     
